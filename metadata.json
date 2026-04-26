@@ -1,0 +1,6 @@
+{
+  "name": "Crypto Gleam Tracker",
+  "description": "Real-time cryptocurrency rates and trends scrapper and dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
