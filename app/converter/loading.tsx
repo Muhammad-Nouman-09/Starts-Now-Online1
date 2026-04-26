@@ -1,29 +1,56 @@
-import { Loader2 } from "lucide-react";
-
 export default function Loading() {
-  return (
-    <div className="flex min-h-[60vh] w-full items-center justify-center">
-      <div className="relative flex flex-col items-center gap-6">
-        {/* Glowing background effect */}
-        <div className="absolute inset-0 -z-10 h-32 w-32 animate-pulse rounded-full bg-emerald-500/20 blur-3xl" />
-        
-        {/* Animated rings */}
-        <div className="relative flex h-20 w-20 items-center justify-center">
-          <div className="absolute h-full w-full animate-[spin_3s_linear_infinite] rounded-full border-b-2 border-emerald-500" />
-          <div className="absolute h-16 w-16 animate-[spin_2s_linear_infinite_reverse] rounded-full border-t-2 border-emerald-400/60" />
-          <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
+    return (
+        <div className="min-h-screen bg-[#05070b] text-white flex items-center justify-center px-4">
+            <div className="w-full max-w-3xl animate-pulse">
+
+                {/* Title */}
+                <div className="mb-8">
+                    <div className="h-4 w-40 bg-gray-800 rounded mb-3"></div>
+                    <div className="h-10 w-80 bg-gray-700 rounded"></div>
+                </div>
+
+                {/* Card */}
+                <div className="bg-[#0b0f14] border border-gray-800 rounded-2xl p-8">
+
+                    {/* Inputs Row */}
+                    <div className="flex items-center gap-4">
+
+                        {/* Left Input */}
+                        <div className="flex-1">
+                            <div className="h-3 w-24 bg-gray-800 rounded mb-2"></div>
+                            <div className="h-14 bg-gray-700 rounded-xl"></div>
+                        </div>
+
+                        {/* Swap Button */}
+                        <div className="w-12 h-12 bg-gray-700 rounded-full"></div>
+
+                        {/* Right Input */}
+                        <div className="flex-1">
+                            <div className="h-3 w-24 bg-gray-800 rounded mb-2"></div>
+                            <div className="h-14 bg-gray-700 rounded-xl"></div>
+                        </div>
+                    </div>
+
+                    {/* Bottom Info */}
+                    <div className="mt-10 grid grid-cols-3 gap-6">
+                        <div>
+                            <div className="h-3 w-28 bg-gray-800 rounded mb-2"></div>
+                            <div className="h-4 w-36 bg-gray-700 rounded"></div>
+                        </div>
+
+                        <div>
+                            <div className="h-3 w-24 bg-gray-800 rounded mb-2"></div>
+                            <div className="h-4 w-28 bg-gray-700 rounded"></div>
+                        </div>
+
+                        <div>
+                            <div className="h-3 w-32 bg-gray-800 rounded mb-2"></div>
+                            <div className="h-4 w-24 bg-gray-700 rounded"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        
-        <div className="flex flex-col items-center gap-2">
-          <h3 className="text-lg font-medium text-white tracking-widest uppercase">
-            Loading
-            <span className="animate-[ping_1.5s_infinite_0ms] rounded-full">.</span>
-            <span className="animate-[ping_1.5s_infinite_300ms] rounded-full">.</span>
-            <span className="animate-[ping_1.5s_infinite_600ms] rounded-full">.</span>
-          </h3>
-          <p className="text-sm text-zinc-500">Connecting to crypto network</p>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }

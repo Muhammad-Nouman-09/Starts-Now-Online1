@@ -1,7 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
+  "/api/crypto-rates/route": "app/api/crypto-rates/route.js",
   "/page": "app/page.js",
-  "/blog/page": "app/blog/page.js",
+  "/market/page": "app/market/page.js",
   "/converter/page": "app/converter/page.js",
-  "/market/page": "app/market/page.js"
+  "/blog/page": "app/blog/page.js"
 }
