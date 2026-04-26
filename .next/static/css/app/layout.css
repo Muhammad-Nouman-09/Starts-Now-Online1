@@ -2670,4 +2670,12 @@ body {
       --tw-backdrop-grayscale: initial;
       --tw-backdrop-hue-rotate: initial;
       --tw-backdrop-invert: initial;
-      --tw-backdrop-opacity: i
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
+    }
+  }
+}
