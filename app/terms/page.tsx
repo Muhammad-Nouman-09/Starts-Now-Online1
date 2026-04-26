@@ -6,7 +6,7 @@ export default function TermsPage() {
       <div className="prose prose-invert max-w-none prose-p:text-zinc-400 prose-headings:text-white prose-p:leading-relaxed">
         <h2 className="text-xl font-bold mt-12 mb-4 italic">1. Acceptance of Terms</h2>
         <p className="mb-8">
-          By initializing a connection to the GLEAM.INTEL terminal, you acknowledge that you have read and agreed to these operational parameters. Accessing our data streams constitutes acceptance of these terms in their entirety.
+          By initializing a connection to the Starts Now terminal, you acknowledge that you have read and agreed to these operational parameters. Accessing our data streams constitutes acceptance of these terms in their entirety.
         </p>
 
         <h2 className="text-xl font-bold mt-12 mb-4 italic">2. Intelligence Use</h2>
@@ -21,7 +21,7 @@ export default function TermsPage() {
 
         <h2 className="text-xl font-bold mt-12 mb-4 italic">4. Limitation of Liability</h2>
         <p className="mb-8">
-          GLEAM.INTEL and its contributors shall not be held liable for any synchronization issues, data delays, or financial outcomes resulting from the use of our intelligence tools. Our systems are provided "as-is" with a focus on maximum relay accuracy.
+          Starts Now and its contributors shall not be held liable for any synchronization issues, data delays, or financial outcomes resulting from the use of our intelligence tools. Our systems are provided "as-is" with a focus on maximum relay accuracy.
         </p>
       </div>
     </MetaLayout>

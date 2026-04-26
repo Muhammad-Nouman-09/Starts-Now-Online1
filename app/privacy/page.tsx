@@ -6,7 +6,7 @@ export default function PrivacyPage() {
       <div className="prose prose-invert max-w-none prose-p:text-zinc-400 prose-headings:text-white prose-p:leading-relaxed">
         <h2 className="text-xl font-bold mt-12 mb-4 italic">1. Information Retrieval</h2>
         <p className="mb-8">
-          At GLEAM.INTEL, we prioritize your digital sovereignty. We do not require account registration to access our core intelligence market feeds. However, certain interactions may involve the collection of basic analytic metadata (entry nodes, session duration) to optimize our relay network performance.
+          At Starts Now, we prioritize your digital sovereignty. We do not require account registration to access our core intelligence market feeds. However, certain interactions may involve the collection of basic analytic metadata (entry nodes, session duration) to optimize our relay network performance.
         </p>
 
         <h2 className="text-xl font-bold mt-12 mb-4 italic">2. AdSense & Data Cookies</h2>

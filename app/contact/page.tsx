@@ -43,7 +43,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h4 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-1 font-mono">Channel 01: Email</h4>
-                <p className="text-sm font-bold">ops@gleam.intel</p>
+                <p className="text-sm font-bold">ops@Starts Now</p>
               </div>
             </div>
 
@@ -69,16 +69,16 @@ export default function ContactPage() {
           </div>
 
           <div className="p-8 rounded-3xl bg-zinc-900/40 border border-zinc-800">
-             <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 flex items-center gap-2">
-               <MessageSquare className="w-4 h-4 text-emerald-500" /> System Status
-             </h3>
-             <p className="text-[10px] text-zinc-600 font-mono leading-relaxed uppercase tracking-tight">
-               Response latency: 180ms - 1200ms
-               <br />
-               Protocol: Secure Handshake 2.4
-               <br />
-               Current Wait Time: &lt; 2 Hours
-             </p>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 flex items-center gap-2">
+              <MessageSquare className="w-4 h-4 text-emerald-500" /> System Status
+            </h3>
+            <p className="text-[10px] text-zinc-600 font-mono leading-relaxed uppercase tracking-tight">
+              Response latency: 180ms - 1200ms
+              <br />
+              Protocol: Secure Handshake 2.4
+              <br />
+              Current Wait Time: &lt; 2 Hours
+            </p>
           </div>
         </div>
 
@@ -86,17 +86,17 @@ export default function ContactPage() {
         <div className="lg:col-span-7">
           <div className="bg-zinc-900/20 border border-zinc-800 rounded-[40px] p-8 md:p-12 shadow-2xl">
             {status === "sent" ? (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="text-center py-20 space-y-6"
               >
                 <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto border border-emerald-500/20">
-                   <Send className="w-10 h-10 text-emerald-500" />
+                  <Send className="w-10 h-10 text-emerald-500" />
                 </div>
                 <h3 className="text-2xl font-black italic tracking-tighter">Transmission Successful</h3>
                 <p className="text-zinc-500 max-w-xs mx-auto">Your intelligence request has been broadcast to our operations team.</p>
-                <button 
+                <button
                   onClick={() => setStatus("idle")}
                   className="text-xs font-bold uppercase tracking-widest text-emerald-500 hover:text-emerald-400 transition-colors"
                 >
@@ -108,22 +108,22 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest pl-2">Identifier</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       required
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="YOUR_NAME"
                       className="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs focus:outline-none focus:border-emerald-500 transition-all uppercase"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest pl-2">Relay Address</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       required
                       value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="MAIL@DOMAIN.COM"
                       className="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs focus:outline-none focus:border-indigo-500 transition-all uppercase"
                     />
@@ -132,9 +132,9 @@ export default function ContactPage() {
 
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest pl-2">Sector</label>
-                  <select 
+                  <select
                     value={formData.subject}
-                    onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     className="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs focus:outline-none focus:border-amber-500 transition-all uppercase cursor-pointer appearance-none"
                   >
                     <option>Intelligence Inquiry</option>
@@ -147,17 +147,17 @@ export default function ContactPage() {
 
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest pl-2">Transmission Data</label>
-                  <textarea 
+                  <textarea
                     rows={6}
                     required
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="ENTER_INTEL_HERE..."
                     className="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs focus:outline-none focus:border-emerald-500 transition-all uppercase resize-none"
                   />
                 </div>
 
-                <button 
+                <button
                   type="submit"
                   disabled={status === "sending"}
                   className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-black uppercase tracking-widest text-[10px] py-5 rounded-2xl transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/10"
