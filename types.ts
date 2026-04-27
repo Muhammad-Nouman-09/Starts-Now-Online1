@@ -23,6 +23,9 @@ export interface BlogPost {
   author: string;
   category: string;
   readTime: string;
+  fontFamily?: string;
+  alignment?: "left" | "center" | "right" | "justify";
+  lineHeight?: string;
 }
 
 export interface CryptoSnapshot {

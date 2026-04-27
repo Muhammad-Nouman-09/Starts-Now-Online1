@@ -3,6 +3,8 @@ import { ArrowLeft, Share2, MessageSquare, ChevronRight, Hash, Zap, BookOpen } f
 import { mockBlogPosts } from "@/constants";
 import AdPlacement from "@/components/AdPlacement";
 
+import ReactMarkdown from "react-markdown";
+
 export default async function BlogPostDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const post = mockBlogPosts.find(p => p.id === id);
@@ -47,17 +49,15 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             </div>
           </header>
 
-          <div className="prose prose-invert max-w-none prose-p:text-zinc-400 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-headings:italic prose-headings:tracking-tighter prose-headings:text-white">
-            <p>{post.content}</p>
-            <p>
-              Cryptocurrency markets in 2026 are defined by rapid institutional onboarding and the emergence of sovereign-level digital assets. 
-              As we analyze the current velocity, it becomes clear that decentralized systems are no longer a "parallel" path but are becoming the core infrastructure of the global exchange network.
-            </p>
-            <p>
-              The technical hurdles that once plagued the industry—specifically scalability and security—vulnerability models—have been largely addressed by the shift toward zk-proofs and modular storage hierarchies. 
-              However, the human element remains the most significant risk factor.
-            </p>
-
+          <div 
+            className="prose prose-invert max-w-none prose-p:text-zinc-400 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-headings:italic prose-headings:tracking-tighter prose-headings:text-white"
+            style={{ 
+              textAlign: post.alignment || 'left',
+              fontFamily: post.fontFamily || 'inherit',
+              lineHeight: post.lineHeight || '1.7'
+            }}
+          >
+            <ReactMarkdown>{post.content}</ReactMarkdown>
             <AdPlacement type="horizontal" className="my-10 md:my-16" label="Market Intelligence Partner" />
           </div>
 
