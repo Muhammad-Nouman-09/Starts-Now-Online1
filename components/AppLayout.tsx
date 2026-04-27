@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Coins, LayoutDashboard, Calculator, ArrowLeftRight, BookOpen, ExternalLink, Menu, X } from "lucide-react";
 import React, { useState } from "react";
@@ -14,8 +13,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const navItems = [
     { name: "Terminal", path: "/", icon: LayoutDashboard },
     { name: "Market", path: "/market", icon: Coins },
-    { name: "Simulator", path: "/calculator", icon: Calculator },
-    { name: "Bridge", path: "/converter", icon: ArrowLeftRight },
+    { name: "Profit Calculator", path: "/calculator", icon: Calculator },
+    { name: "Converter", path: "/converter", icon: ArrowLeftRight },
     { name: "Intelligence", path: "/blog", icon: BookOpen },
   ];
 
@@ -25,9 +24,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <nav className="fixed top-0 w-full z-[100] border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="h-8 transition-transform group-hover:scale-105 flex items-center">
-              <Image src="/logo.png" alt="Start Logo" width={100} height={32} className="h-full w-auto object-contain invert opacity-90 group-hover:opacity-100 transition-opacity" priority />
-            </div>
             <span className="font-black italic tracking-tighter text-xl">Starts Now</span>
           </Link>
 
@@ -85,13 +81,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <footer className="border-t border-zinc-900 px-6 py-12 bg-zinc-950">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-2 grayscale group-hover:grayscale-0 transition-all opacity-50">
-            <div className="h-5 flex items-center">
-              <Image src="/logo.png" alt="Start Logo" width={80} height={20} className="h-full w-auto object-contain invert" />
-            </div>
             <span className="text-[10px] font-black italic tracking-tighter">Starts Now</span>
           </div>
           <div className="text-zinc-800 text-[9px] font-mono uppercase tracking-[0.5em]">
-            &copy; 2026 CRYPTO_GLEAM // ALPHA_BUILD
+            &copy; 2026 Starts Now // alpha-build
           </div>
           <div className="flex flex-wrap justify-center gap-6">
             <Link href="/about" className="text-zinc-600 hover:text-zinc-400 text-[10px] font-bold uppercase tracking-widest transition-colors">About</Link>

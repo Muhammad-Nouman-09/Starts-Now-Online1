@@ -5,6 +5,7 @@ import { Calculator as CalcIcon, Plus, Minus, Info, TrendingUp, RefreshCw } from
 import { motion } from "motion/react";
 import { CryptoRate } from "@/types";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
+import { h1 } from "motion/react-client";
 
 export default function CalculatorPage() {
   const [coins, setCoins] = useState<CryptoRate[]>([]);
@@ -57,7 +58,7 @@ export default function CalculatorPage() {
       <header className="mb-8 md:mb-12">
         <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-500 flex items-center gap-2 mb-2">
           <CalcIcon className="w-3 h-3 text-emerald-500" />
-          Yield & ROI Simulator
+          Yield & ROI Calculator
         </h1>
         <p className="text-2xl md:text-4xl font-semibold tracking-tight italic">Profit Calculator</p>
       </header>

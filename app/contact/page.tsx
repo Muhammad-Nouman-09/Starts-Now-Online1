@@ -43,7 +43,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h4 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-1 font-mono">Channel 01: Email</h4>
-                <p className="text-sm font-bold">ops@Starts Now</p>
+                <p className="text-sm font-bold">startsnow39@gmail.com</p>
               </div>
             </div>
 
@@ -53,7 +53,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h4 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-1 font-mono">HQ: Decentralized</h4>
-                <p className="text-sm font-bold">Node 7, Singapore Financial District</p>
+                <p className="text-sm font-bold">Our presence online</p>
               </div>
             </div>
 
