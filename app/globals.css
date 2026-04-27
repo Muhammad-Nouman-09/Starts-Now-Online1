@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-@theme {
+/* @theme {
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
 
   --color-zinc-950: #09090b;
-}
+} */
 
 :root {
   --bg: #09090b;
