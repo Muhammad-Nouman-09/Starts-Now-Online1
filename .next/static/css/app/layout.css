@@ -1497,9 +1497,6 @@
   .text-zinc-800 {
     color: var(--color-zinc-800);
   }
-  .text-zinc-950 {
-    color: var(--color-zinc-950);
-  }
   .capitalize {
     text-transform: capitalize;
   }
@@ -1614,16 +1611,6 @@
         --tw-scale-x: 105%;
         --tw-scale-y: 105%;
         --tw-scale-z: 105%;
-        scale: var(--tw-scale-x) var(--tw-scale-y);
-      }
-    }
-  }
-  .group-hover\:scale-110 {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        --tw-scale-x: 110%;
-        --tw-scale-y: 110%;
-        --tw-scale-z: 110%;
         scale: var(--tw-scale-x) var(--tw-scale-y);
       }
     }
