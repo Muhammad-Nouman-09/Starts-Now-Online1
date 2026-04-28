@@ -65,7 +65,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
-      <body className="bg-black text-white selection:bg-emerald-500/30 antialiased font-sans">
+      <body 
+        className="bg-black text-white selection:bg-emerald-500/30 antialiased font-sans"
+        suppressHydrationWarning
+      >
         <AppLayout>{children}</AppLayout>
       </body>
     </html>

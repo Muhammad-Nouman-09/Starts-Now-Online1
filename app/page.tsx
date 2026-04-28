@@ -1,243 +1,355 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
-import { RefreshCw, Coins, ArrowRight, ChevronRight, ChevronLeft } from "lucide-react";
-import { CryptoSnapshot } from "@/types";
-import { CRYPTO_SCRAPE_URL, FIXED_EXCHANGE_RATES } from "@/constants";
-import AdPlacement from "@/components/AdPlacement";
-import LoadingSkeleton from "@/components/LoadingSkeleton";
+import {
+  Search, ChevronLeft, ChevronRight, ArrowRight,
+  Wallet, Receipt, BarChart3, Brain,
+  Bitcoin, Building2, Briefcase, Users,
+  Star,
+} from "lucide-react";
+import { mockBlogPosts } from "@/constants";
 
-export default function Dashboard() {
-  const [data, setData] = useState<CryptoSnapshot | null>(null);
-  const [loading, setLoading] = useState(true);
-  const sectorsRef = useRef<HTMLDivElement>(null);
+/* ─── Static Data ────────────────────────────────────────────── */
 
-  const scrollSectors = (direction: 'left' | 'right') => {
-    if (sectorsRef.current) {
-      const scrollAmount = 300;
-      sectorsRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+const categories = [
+  {
+    title: "Crypto Tools",
+    description: "Advanced portfolio trackers, profit calculators, and market sentiment analysis.",
+    icon: Bitcoin,
+    href: "/calculator",
+  },
+  {
+    title: "Office Tools",
+    description: "Streamline corporate tasks with document automations and productivity suites.",
+    icon: Building2,
+    href: "#",
+  },
+  {
+    title: "Business Tools",
+    description: "Professional analytics, CRM modules, and high-performance lead trackers.",
+    icon: Briefcase,
+    href: "#",
+  },
+  {
+    title: "Freelancer Tools",
+    description: "Smart invoicing, project timers, and contract management for solo power users.",
+    icon: Users,
+    href: "#",
+  },
+];
+
+const featuredTools = [
+  {
+    title: "Profit Calculator",
+    description: "Real-time multi-asset profit and loss simulator with tax implications.",
+    icon: Wallet,
+    rating: 4.9,
+    users: "12.5k",
+    category: "CRYPTO",
+    href: "/calculator",
+  },
+  {
+    title: "Invoice Generator",
+    description: "Professional, tax-compliant invoice builder for international freelancers.",
+    icon: Receipt,
+    rating: 4.8,
+    users: "8.2k",
+    category: "FREELANCE",
+    href: "#",
+  },
+  {
+    title: "Portfolio Tracker",
+    description: "Unified dashboard for crypto, stocks, and alternative high-yield assets.",
+    icon: BarChart3,
+    rating: 5.0,
+    users: "21.4k",
+    category: "CRYPTO",
+    href: "/market",
+  },
+  {
+    title: "Market Intelligence",
+    description: "AI-driven market insights and sentiment scoring for global businesses.",
+    icon: Brain,
+    rating: 4.7,
+    users: "5.9k",
+    category: "BUSINESS",
+    href: "/blog",
+  },
+];
+
+const blogHighlights = [
+  {
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDyhf7RmcKs2M5QU4Ysv6-Opg-R0p8wkV0Im3BKxsyqMU57063AICAX6SbVFJ-po3iNSK7bk5nhHsHW-6P2PxqDlbnCuyY8baCG3UDLqQ8hJXo18jUv9az_aDVyulWnQf3zqA5PvEvJ74koYU_0Uiyvbyxv4733e19Q4G0UfFvyHvsNbfJrdkrR6GklxIMDNSEWH71XBbr70XhsbMZ0r2IPCwXfhPuF8FK8xWAlsboUSTNHTSh2f2Gpb3Vvvrvja21qOPMPezwx8WQ",
+    badge: "INTELLIGENCE",
+    title: "Maximizing Returns in High-Volatility Environments",
+    excerpt: "Learn how our top users are leveraging automated tools to navigate the current market shift without burnout.",
+    href: "/blog/1",
+  },
+  {
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDJJLGVNlouflXDhA4BQyVYTzadYqMSgqKOoSNvC8qOyhnm8UV4IYisLbku1SXXrzFONFF9mF2gD5tD4Ztjpb_n_WU9Uq9d4UC8qZ8uvSbzVkn1SkiHj0G2YIMvdvhtlWZpG5p8ZjCNr2cHMvraMGmIkYMVw_kOed7rWO3h0Je_z_m8Igz1LU88TtQoMQ6gSAHgfvh8mFESqMuD3quXtAPwRBu51xeyxgIx7kXDn0-kFfdPLit8jJt2zHgns8O67A4vR0m8ePwnnz0",
+    badge: "PRODUCTIVITY",
+    title: "The Future of Remote Office Automation",
+    excerpt: "How AI and specialized document tools are shaving 15 hours off the average executive's work week.",
+    href: "/blog/2",
+  },
+  {
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuALl6xzN0aV3tl8MshT7jA2o6WK4_NILvJw6nJ3797PMZCw3mgnAbqyUCN2fdejiI7AKZJ66S8df67s5bXaBLK7sYKv_M-JZmIpsW5eOYQL28CCEKkjMSrep8xot5MRc87JCqKcQkY4Dr5tLgmn7h5QrzbwhGmUH3FAJuvJvCkQZnlrBQv6ruz16vJ_UeRpsaxrLP4Onb5Tx5G475E7SNE_vnTJby8vmBZaBWjhPgyxiyMSN1RgzG8qkPGwwNy50MJ1y5HQeOJH_CU",
+    badge: "FREELANCER",
+    title: "Scaling Your Solo Business Beyond $100k",
+    excerpt: "The exact stack of financial tools you need to manage six-figure contracts effectively and accurately.",
+    href: "/blog/3",
+  },
+];
+
+/* ─── Page Component ─────────────────────────────────────────── */
+
+export default function HomePage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const toolsScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollTools = (direction: "left" | "right") => {
+    if (toolsScrollRef.current) {
+      toolsScrollRef.current.scrollBy({
+        left: direction === "left" ? -320 : 320,
+        behavior: "smooth",
+      });
     }
   };
 
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch("/api/crypto-rates");
-      const result = await response.json();
-      setData({
-        coins: result.coins || [],
-        exchangeRates: result.exchangeRates || FIXED_EXCHANGE_RATES,
-        fetchedAt: result.fetchedAt || new Date().toISOString(),
-        sourceUrl: CRYPTO_SCRAPE_URL,
-        note: result.message || "Intelligence synchronized.",
-        usedFallback: result.usedFallback ?? false
-      });
-    } catch (err) {
-      setData({
-        coins: [],
-        exchangeRates: FIXED_EXCHANGE_RATES,
-        fetchedAt: new Date().toISOString(),
-        sourceUrl: CRYPTO_SCRAPE_URL,
-        note: "Relay disruption detected.",
-        usedFallback: false
-      });
-    } finally {
-      setLoading(false);
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Future: wire up to a search results page
+    if (searchQuery.trim()) {
+      console.log("Search:", searchQuery);
     }
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const btc = data?.coins?.find(c => c.symbol === "BTC");
-  const gridCoins = data?.coins?.filter(c => ["ETH", "SOL", "XRP", "BNB"].includes(c.symbol)) || [];
-  const otherCoins = data?.coins?.filter(c => !["BTC", "ETH", "SOL", "XRP", "BNB"].includes(c.symbol)) || [];
-
-  if (!loading && (!data?.coins || data.coins.length === 0)) {
-    return (
-      <div className="flex flex-col min-h-screen items-center justify-center p-12">
-        <div className="text-zinc-500 font-mono text-[10px] uppercase tracking-[0.4em] mb-4">Relay Interruption</div>
-        <p className="text-zinc-400 italic text-center max-w-md">The intelligence feed is currently synchronized but returned zero metrics. Revalidation required.</p>
-        <button 
-          onClick={fetchData}
-          className="mt-8 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 px-6 py-3 rounded-full flex items-center gap-3 transition-all"
-        >
-          <RefreshCw className="w-4 h-4 text-emerald-500" />
-          <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Force Relay Reset</span>
-        </button>
-      </div>
-    );
-  }
-
-  const btcDisplay = btc || { name: "Analyzing...", symbol: "???", usdPrice: 0, change24h: 0 };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Header Section */}
-      <header className="max-w-7xl mx-auto px-6 pt-12 pb-8 flex flex-col md:flex-row justify-between items-start gap-6 w-full">
-        <div className="space-y-1">
-          <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-500 flex items-center gap-2">
-            <Coins className="w-3 h-3 text-emerald-500" />
-            Market Scraper Intelligence V1.2.9
+    <div className="flex flex-col">
+      {/* ── Hero Section ─────────────────────────────────────── */}
+      <section className="relative px-6 py-20 md:py-32 overflow-hidden">
+        {/* Gradient blobs */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-400 blur-[120px]" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] rounded-full bg-emerald-800 blur-[100px]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto">
+            Power Your Workflow with{" "}
+            <span className="text-emerald-400">Specialized Tools</span>
           </h1>
-          <p className="text-2xl font-semibold tracking-tight">Main Intelligence Interface</p>
-        </div>
-        
-        <div className="flex flex-wrap gap-3">
-          <div className="bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-full flex items-center gap-2">
-            <div className={`w-2 h-2 rounded-full bg-emerald-500 ${!loading ? 'animate-pulse' : 'opacity-50'}`}></div>
-            <span className="text-[9px] font-bold uppercase tracking-widest text-emerald-500">
-              {data?.usedFallback ? 'Hybrid Fallback Active' : 'Relay Active'}
-            </span>
-          </div>
-          <button 
-            onClick={fetchData}
-            disabled={loading}
-            className="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 shadow-xl px-4 py-2 rounded-full flex items-center gap-2 transition-all active:scale-95 disabled:opacity-50"
+          <p className="text-base md:text-lg text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+            The professional toolkit engineered for Crypto, Business, and Office
+            high-performers. One platform, infinite efficiency.
+          </p>
+
+          {/* Search bar */}
+          <form
+            onSubmit={handleSearch}
+            className="max-w-2xl mx-auto flex flex-col sm:flex-row gap-3 p-2 bg-zinc-900/80 rounded-xl border border-zinc-800 shadow-2xl"
           >
-            <RefreshCw className={`w-3 h-3 text-zinc-400 ${loading ? 'animate-spin' : ''}`} />
-            <span className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 text-nowrap">Revalidate Seed</span>
-          </button>
-        </div>
-      </header>
-
-      {loading ? (
-        <div className="max-w-7xl mx-auto px-6 w-full py-12">
-          <LoadingSkeleton />
-        </div>
-      ) : (
-        <>
-          {/* Hero Ad Placement */}
-          <div className="max-w-7xl mx-auto px-6 mb-8">
-            <AdPlacement type="horizontal" className="border-emerald-500/10" />
-          </div>
-
-      {/* Main Hero */}
-      <section className="border-y border-zinc-900 min-h-[30vh] md:min-h-[40vh] flex items-center py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-6 w-full">
-          <AnimatePresence mode="wait">
-            {!loading && (
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 md:gap-8"
-              >
-                <div className="space-y-0">
-                  <span className="text-zinc-500 font-mono text-sm md:text-lg uppercase tracking-tighter block mb-2">01 / {btcDisplay.name} ({btcDisplay.symbol})</span>
-                  <Link href={`/coin/${btcDisplay.symbol}`} className="text-[50px] sm:text-[90px] md:text-[120px] lg:text-[160px] font-black leading-none tracking-tighter italic flex items-baseline hover:text-emerald-400 transition-colors break-all md:break-normal">
-                    ${btcDisplay.usdPrice.toLocaleString().split('.')[0]}
-                    <span className="text-zinc-800">.{btcDisplay.usdPrice.toLocaleString().split('.')[1] || '00'}</span>
-                  </Link>
-                </div>
-                <div className="lg:text-right pb-4 flex lg:flex-col items-center lg:items-end gap-x-6">
-                  <div className={`text-4xl sm:text-6xl font-black italic tracking-tighter ${btcDisplay.change24h >= 0 ? 'text-emerald-400' : 'text-rose-500'}`}>
-                    {btcDisplay.change24h > 0 ? '+' : ''}{btcDisplay.change24h}%
-                  </div>
-                  <div className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em]">24H Global Velocity</div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+            <div className="flex-1 flex items-center px-4 gap-3">
+              <Search className="w-5 h-5 text-zinc-600 shrink-0" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search for tools (e.g. Portfolio Tracker, Invoice...)"
+                className="w-full bg-transparent border-none focus:outline-none text-white placeholder:text-zinc-600 text-sm"
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-emerald-400 hover:bg-emerald-300 text-zinc-950 px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors shrink-0"
+            >
+              Find Tool
+            </button>
+          </form>
         </div>
       </section>
 
-      <div className="flex justify-center -mt-6 relative z-20 pointer-events-none">
-         <motion.div
-           animate={{ y: [0, 6, 0] }}
-           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-           className="bg-zinc-950 border border-zinc-800 p-2.5 rounded-full shadow-2xl"
-         >
-            <ChevronRight className="w-3 h-3 rotate-90 text-emerald-500/50" />
-         </motion.div>
-      </div>
-
-      {/* Minor Grid Items (Sectors) */}
-      <section className="max-w-7xl mx-auto px-6 py-6 md:py-12 w-full">
-        <div className="flex justify-between items-center mb-6">
-          <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.4em]">Strategic Sectors</h3>
-          <div className="flex gap-2">
-            <button 
-              onClick={() => scrollSectors('left')}
-              className="w-8 h-8 rounded-full border border-zinc-900 flex items-center justify-center text-zinc-600 hover:text-emerald-500 hover:border-emerald-500/30 transition-all bg-zinc-950 shadow-xl"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button 
-              onClick={() => scrollSectors('right')}
-              className="w-8 h-8 rounded-full border border-zinc-900 flex items-center justify-center text-zinc-600 hover:text-emerald-500 hover:border-emerald-500/30 transition-all bg-zinc-950 shadow-xl"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
+      {/* ── Category Showcase Grid ───────────────────────────── */}
+      <section className="px-6 py-20 max-w-7xl mx-auto w-full">
+        <div className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
+            Built for Every Professional
+          </h2>
+          <div className="h-1 w-20 bg-emerald-400 rounded-full" />
         </div>
-        <div className="flex flex-col lg:flex-row gap-8">
-          <div 
-            ref={sectorsRef}
-            className="flex-1 flex overflow-x-auto gap-4 no-scrollbar scroll-smooth snap-x snap-mandatory pb-4"
-          >
-            {gridCoins.map((coin) => (
-              <Link 
-                key={coin.symbol} 
-                href={`/coin/${coin.symbol}`} 
-                className="bg-zinc-950 p-6 md:p-8 group hover:bg-zinc-900/50 transition-colors border border-zinc-900 rounded-2xl min-w-[280px] sm:min-w-[320px] shrink-0 snap-start"
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {categories.map((cat) => (
+            <div
+              key={cat.title}
+              className="glass-card p-6 rounded-xl group hover:border-emerald-500/50 transition-all"
+            >
+              <div className="w-12 h-12 bg-emerald-400/10 rounded-lg flex items-center justify-center mb-6 text-emerald-400 group-hover:scale-110 transition-transform">
+                <cat.icon className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl md:text-2xl font-semibold mb-3">
+                {cat.title}
+              </h3>
+              <p className="text-zinc-400 text-base mb-6 leading-relaxed">
+                {cat.description}
+              </p>
+              <Link
+                href={cat.href}
+                className="text-emerald-400 text-xs font-bold uppercase tracking-widest flex items-center gap-2 group/btn"
               >
-                <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-1">{coin.name} / {coin.symbol}</div>
-                <div className="text-2xl md:text-3xl font-bold italic tracking-tighter group-hover:text-emerald-400 transition-colors">
-                  ${coin.usdPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                EXPLORE
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Featured Power Tools ─────────────────────────────── */}
+      <section className="bg-zinc-900/30 py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
+                Featured Power Tools
+              </h2>
+              <p className="text-zinc-400">
+                The most utilized instruments in our ecosystem.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => scrollTools("left")}
+                className="p-3 border border-zinc-800 rounded-full text-white hover:bg-zinc-800 transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => scrollTools("right")}
+                className="p-3 border border-zinc-800 rounded-full text-white hover:bg-zinc-800 transition-colors"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          <div
+            ref={toolsScrollRef}
+            className="flex overflow-x-auto gap-6 pb-4 no-scrollbar scroll-smooth snap-x snap-mandatory"
+          >
+            {featuredTools.map((tool) => (
+              <Link
+                key={tool.title}
+                href={tool.href}
+                className="min-w-[280px] sm:min-w-[300px] bg-zinc-950 p-6 rounded-xl border border-zinc-800 hover:border-emerald-500/50 transition-all group shrink-0 snap-start"
+              >
+                <div className="flex justify-between items-start mb-6">
+                  <tool.icon className="w-6 h-6 text-emerald-400" />
+                  <div className="flex items-center gap-1 bg-emerald-400/10 px-2 py-1 rounded text-emerald-400 text-xs font-bold">
+                    <Star className="w-3.5 h-3.5 fill-emerald-400" />
+                    {tool.rating}
+                  </div>
                 </div>
-                <div className={`text-[10px] font-mono mt-2 font-bold ${coin.change24h >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
-                  {coin.change24h >= 0 ? '▲' : '▼'} {Math.abs(coin.change24h)}%
+                <h4 className="text-xl md:text-2xl font-semibold mb-2 group-hover:text-emerald-400 transition-colors">
+                  {tool.title}
+                </h4>
+                <p className="text-zinc-400 text-sm mb-6 leading-relaxed">
+                  {tool.description}
+                </p>
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-zinc-600">
+                  <span>{tool.users} USERS</span>
+                  <span className="text-emerald-400">{tool.category}</span>
                 </div>
               </Link>
             ))}
           </div>
-          <AdPlacement type="vertical" className="hidden lg:flex" />
-          <div className="lg:hidden w-full">
-             <AdPlacement type="horizontal" className="w-full" label="Mid-Feed Update" />
-          </div>
         </div>
       </section>
 
-      {/* Asset List */}
-      <section className="max-w-7xl mx-auto px-6 pb-24 w-full">
-        <div className="flex justify-between items-end mb-8">
-          <h3 className="text-[10px] font-bold text-zinc-600 uppercase tracking-[0.4em]">Extended Market Feed</h3>
-          <Link href="/market" className="text-[10px] font-black uppercase tracking-widest text-emerald-500 hover:text-emerald-400 flex items-center gap-2 group transition-colors">
-            View All 50+ Assets 
-            <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+      {/* ── Latest from our Blog ─────────────────────────────── */}
+      <section className="px-6 py-20 max-w-7xl mx-auto w-full">
+        <div className="flex justify-between items-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+            Latest from our Blog
+          </h2>
+          <Link
+            href="/blog"
+            className="text-emerald-400 text-xs font-bold uppercase tracking-widest border-b border-emerald-400 pb-0.5 hover:text-emerald-300 hover:border-emerald-300 transition-colors"
+          >
+            VIEW ALL POSTS
           </Link>
         </div>
-        <div className="border border-zinc-800 rounded-2xl overflow-hidden bg-zinc-900/10">
-          <div className="grid grid-cols-12 p-4 bg-zinc-900/40 border-b border-zinc-800 text-[9px] font-bold uppercase tracking-widest text-zinc-500">
-            <div className="col-span-8">Intelligence Asset Identification</div>
-            <div className="col-span-4 text-right">Market Valuation</div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {blogHighlights.map((post) => (
+            <Link
+              key={post.title}
+              href={post.href}
+              className="flex flex-col group cursor-pointer"
+            >
+              <div className="aspect-video overflow-hidden rounded-xl mb-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3">
+                {post.badge}
+              </span>
+              <h3 className="text-xl md:text-2xl font-semibold mb-3 group-hover:text-emerald-400 transition-colors leading-tight">
+                {post.title}
+              </h3>
+              <p className="text-zinc-400 text-base line-clamp-2 leading-relaxed">
+                {post.excerpt}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ── CTA Section ──────────────────────────────────────── */}
+      <section className="px-6 py-24">
+        <div className="max-w-5xl mx-auto bg-emerald-400 text-zinc-950 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+          {/* Dot pattern overlay */}
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at center, #000 1px, transparent 1px)",
+                backgroundSize: "20px 20px",
+              }}
+            />
           </div>
-          <div className="divide-y divide-zinc-900">
-            {otherCoins.slice(0, 10).map((coin) => (
-              <Link key={coin.symbol} href={`/coin/${coin.symbol}`} className="flex justify-between p-4 px-6 items-center hover:bg-zinc-800/30 transition-colors group">
-                <div className="flex items-baseline gap-4">
-                  <span className="font-bold text-sm tracking-tight">{coin.name}</span>
-                  <span className="text-[9px] font-mono text-zinc-700 tracking-[0.2em] group-hover:text-emerald-500/50 transition-colors uppercase">{coin.symbol}</span>
-                </div>
-                <div className="flex items-center gap-8 font-mono">
-                   <div className={`text-[10px] font-bold ${coin.change24h >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
-                     {coin.change24h > 0 ? '+' : ''}{coin.change24h}%
-                   </div>
-                   <div className="text-sm font-medium tracking-tighter">
-                     ${coin.usdPrice.toLocaleString()}
-                   </div>
-                   <ArrowRight className="w-4 h-4 text-zinc-800 group-hover:text-white transition-colors" />
-                </div>
+
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 tracking-tight">
+              Ready to optimize your productivity?
+            </h2>
+            <p className="text-lg md:text-xl mb-10 opacity-90 font-medium max-w-2xl mx-auto">
+              Join 50,000+ power users using Starts Now to dominate their
+              respective markets. Get started for free today.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/register" 
+                className="bg-zinc-950 text-emerald-400 px-10 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all active:scale-95 text-center"
+              >
+                Get Started for Free
               </Link>
-            ))}
+              <Link 
+                href="/contact" 
+                className="bg-transparent border-2 border-zinc-950 text-zinc-950 px-10 py-4 rounded-xl font-bold text-lg hover:bg-zinc-950/10 transition-all text-center"
+              >
+                Request Demo
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-    </>
-  )}
-</div>
+    </div>
   );
 }
