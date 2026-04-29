@@ -2,21 +2,111 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowRight, Mail, Lock, Github, Chrome } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowRight, Mail, Lock, Chrome } from "lucide-react";
+import { isSupabaseConfigured, supabase } from "@/lib/supabase";
+import { upsertUserProfile } from "@/lib/profiles";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [providerLoading, setProviderLoading] = useState<"google" | null>(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const getRedirectUrl = () => {
+    if (typeof window === "undefined") return undefined;
+    return `${window.location.origin}/`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+    setMessage("");
+
+    if (!isSupabaseConfigured) {
+      setError("Supabase is not configured. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your environment.");
+      return;
+    }
+
     setIsLoading(true);
-    // Simulate auth delay
-    setTimeout(() => setIsLoading(false), 1500);
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
+
+    setIsLoading(false);
+
+    if (error) {
+      setError(error.message);
+      return;
+    }
+
+    if (data.user) {
+      await upsertUserProfile(data.user);
+    }
+
+    setEmail("");
+    setPassword("");
+    router.push("/");
+    router.refresh();
+  };
+
+  const handleGoogleSignIn = async () => {
+    setError("");
+    setMessage("");
+
+    if (!isSupabaseConfigured) {
+      setError("Supabase is not configured. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your environment.");
+      return;
+    }
+
+    setProviderLoading("google");
+
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: getRedirectUrl(),
+      },
+    });
+
+    if (error) {
+      setError(error.message);
+      setProviderLoading(null);
+    }
+  };
+
+  const handlePasswordReset = async () => {
+    setError("");
+    setMessage("");
+
+    if (!isSupabaseConfigured) {
+      setError("Supabase is not configured. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your environment.");
+      return;
+    }
+
+    if (!email.trim()) {
+      setError("Enter your email address first, then request a password reset.");
+      return;
+    }
+
+    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: getRedirectUrl(),
+    });
+
+    if (error) {
+      setError(error.message);
+      return;
+    }
+
+    setMessage("Password reset link sent. Check your email to continue.");
   };
 
   return (
     <div className="min-h-screen bg-zinc-950 flex flex-col justify-center items-center px-6 py-12 relative overflow-hidden">
-      {/* Background Blobs */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-400/5 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
 
@@ -37,6 +127,8 @@ export default function LoginPage() {
                 <input
                   type="email"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
                   className="w-full bg-zinc-950 border border-zinc-800 rounded-xl py-3 px-11 text-sm text-white placeholder:text-zinc-700 focus:border-emerald-500/50 outline-none transition-all"
                 />
@@ -47,18 +139,37 @@ export default function LoginPage() {
             <div className="space-y-2">
               <div className="flex justify-between items-center px-1">
                 <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Password</label>
-                <Link href="#" className="text-[10px] font-bold uppercase tracking-widest text-emerald-500 hover:text-emerald-400">Forgot?</Link>
+                <button
+                  type="button"
+                  onClick={handlePasswordReset}
+                  className="text-[10px] font-bold uppercase tracking-widest text-emerald-500 hover:text-emerald-400"
+                >
+                  Forgot?
+                </button>
               </div>
               <div className="relative">
                 <input
                   type="password"
                   required
-                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Password"
                   className="w-full bg-zinc-950 border border-zinc-800 rounded-xl py-3 px-11 text-sm text-white placeholder:text-zinc-700 focus:border-emerald-500/50 outline-none transition-all"
                 />
                 <Lock className="w-4 h-4 text-zinc-700 absolute left-4 top-1/2 -translate-y-1/2" />
               </div>
             </div>
+
+            {error && (
+              <p className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-xs font-semibold text-red-200">
+                {error}
+              </p>
+            )}
+            {message && (
+              <p className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-xs font-semibold text-emerald-200">
+                {message}
+              </p>
+            )}
 
             <button
               disabled={isLoading}
@@ -84,20 +195,25 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <button className="flex items-center justify-center gap-3 bg-zinc-950 border border-zinc-800 hover:border-zinc-700 py-2.5 rounded-xl transition-all group">
-              <Github className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Github</span>
-            </button>
-            <button className="flex items-center justify-center gap-3 bg-zinc-950 border border-zinc-800 hover:border-zinc-700 py-2.5 rounded-xl transition-all group">
-              <Chrome className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+          <div>
+            <button
+              type="button"
+              onClick={handleGoogleSignIn}
+              disabled={providerLoading !== null}
+              className="flex w-full items-center justify-center gap-3 bg-zinc-950 border border-zinc-800 hover:border-zinc-700 py-2.5 rounded-xl transition-all group disabled:opacity-50"
+            >
+              {providerLoading === "google" ? (
+                <div className="w-4 h-4 border-2 border-zinc-500 border-t-transparent rounded-full animate-spin" />
+              ) : (
+                <Chrome className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+              )}
               <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Google</span>
             </button>
           </div>
         </div>
 
         <p className="text-center mt-8 text-zinc-500 text-sm">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/register" className="text-emerald-400 font-bold hover:underline underline-offset-4">
             Sign up now
           </Link>
