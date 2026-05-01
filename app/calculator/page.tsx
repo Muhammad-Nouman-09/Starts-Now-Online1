@@ -72,7 +72,7 @@ export default function ProfitCalculatorPage() {
           <Calculator className="w-3 h-3 text-emerald-500" />
           ROI Simulator
         </h1>
-        <p className="text-2xl md:text-4xl font-semibold tracking-tight italic">Profit Calculator</p>
+        <p className="text-2xl md:text-4xl font-semibold tracking-tight italic">Crypto Profit Calculator</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -246,6 +246,111 @@ export default function ProfitCalculatorPage() {
           </div>
         </div>
       </div>
+
+      {/* SEO Content Section */}
+      <div className="mt-16 bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 md:p-12">
+        <article className="prose prose-invert prose-zinc max-w-none">
+          <h2 className="text-2xl font-bold text-emerald-400 mb-4">Free Crypto Profit Calculator</h2>
+          
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-2 text-zinc-200">What is the Crypto Profit Calculator?</h3>
+            <p className="text-zinc-400 leading-relaxed">
+              Our free Crypto Profit Calculator helps you determine your potential returns on cryptocurrency investments. By factoring in entry prices, target exit prices, and trading fees, this tool is essential for traders, investors, and anyone looking to project their crypto portfolio's profitability.
+            </p>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-2 text-zinc-200">How It Works</h3>
+            <ol className="list-decimal list-inside space-y-2 text-zinc-400">
+              <li><strong className="text-zinc-300">Select Asset:</strong> Choose your target cryptocurrency.</li>
+              <li><strong className="text-zinc-300">Enter Capital:</strong> Input your initial investment amount in USD.</li>
+              <li><strong className="text-zinc-300">Set Prices:</strong> Define your Entry Price and Exit Price (Target).</li>
+              <li><strong className="text-zinc-300">Adjust Fees:</strong> Specify any inbound or outbound trading fees.</li>
+              <li><strong className="text-zinc-300">View Results:</strong> Instantly see your projected P&L, ROI, and total exit value.</li>
+            </ol>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-2 text-zinc-200">Examples & Use Cases</h3>
+            <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800 mt-4">
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                <strong className="text-emerald-500 block mb-2">Scenario: Basic Trade Projection</strong>
+                If you invest <strong className="text-white">$1,000</strong> in Bitcoin at <strong className="text-white">$50,000</strong>, and your target exit price is <strong className="text-white">$60,000</strong>, the calculator instantly determines your profit is <strong className="text-emerald-400">$200</strong>. This represents a <strong className="text-emerald-400">20% ROI</strong> before fees.
+              </p>
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4 text-zinc-200">Frequently Asked Questions</h3>
+            <div className="space-y-4">
+              <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
+                <h4 className="font-bold text-zinc-300 mb-1">What is a Crypto Profit Calculator?</h4>
+                <p className="text-sm text-zinc-500">A tool that computes the net profit or loss of a cryptocurrency trade based on your entry and exit prices.</p>
+              </div>
+              <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
+                <h4 className="font-bold text-zinc-300 mb-1">How is crypto profit calculated?</h4>
+                <p className="text-sm text-zinc-500">The basic formula is: Profit = (Exit Price × Coin Amount) - Initial Investment - Total Fees.</p>
+              </div>
+              <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
+                <h4 className="font-bold text-zinc-300 mb-1">Does this calculator include trading fees?</h4>
+                <p className="text-sm text-zinc-500">Yes, you can input both inbound (buying) and outbound (selling) fee percentages to get an accurate net return.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "HowTo",
+                "name": "How to Calculate Crypto Profit",
+                "description": "Step-by-step guide to calculating cryptocurrency trading profit.",
+                "step": [
+                  { "@type": "HowToStep", "text": "Choose your target cryptocurrency asset." },
+                  { "@type": "HowToStep", "text": "Input your initial investment amount in USD." },
+                  { "@type": "HowToStep", "text": "Define your Entry Price and Exit Price." },
+                  { "@type": "HowToStep", "text": "Specify inbound or outbound trading fees." },
+                  { "@type": "HowToStep", "text": "View your projected P&L, ROI, and total exit value." }
+                ]
+              },
+              {
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "What is a Crypto Profit Calculator?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "A tool that computes the net profit or loss of a cryptocurrency trade based on your entry and exit prices."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How is crypto profit calculated?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The basic formula is: Profit = (Exit Price × Coin Amount) - Initial Investment - Total Fees."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Does this calculator include trading fees?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes, you can input both inbound (buying) and outbound (selling) fee percentages to get an accurate net return."
+                    }
+                  }
+                ]
+              }
+            ]
+          })
+        }}
+      />
     </div>
   );
 }

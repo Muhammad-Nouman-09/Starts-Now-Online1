@@ -14,10 +14,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Starts Now",
-  description: "Master the markets with Starts Now. Access essential crypto tools, deep-dive blockchain blogs, and real-time market data to stay ahead of the curve. Your financial future starts now.",
+  title: "Free Tools for Students, Freelancers & Businesses | Starts Now",
+  description: "Discover free tools for students, freelancers, and businesses. Boost productivity with AI-powered writing, coding, and financial tools. No signup required, start instantly.",
   keywords: [
-    "crypto calculator",
+    "free crypto calculator",
     "crypto converter",
     "market data",
     "blockchain blog",
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   creator: "Starts Now",
   publisher: "Starts Now",
   openGraph: {
-    title: "Starts Now - Crypto Tools & Market Insights",
-    description: "Master the markets with Starts Now. Access essential crypto tools, deep-dive blockchain blogs, and real-time market data.",
+    title: "Free Tools for Students, Freelancers & Businesses",
+    description: "Discover free tools for students, freelancers, and businesses. Boost productivity with AI-powered writing, coding, and financial tools. No signup required, start instantly.",
     url: "https://starts-now-online1.vercel.app/",
     siteName: "Starts Now",
     images: [
@@ -42,20 +42,20 @@ export const metadata: Metadata = {
         url: "/og-image.png", // Add an Open Graph image to your public folder
         width: 1200,
         height: 630,
-        alt: "Starts Now - Master the Markets",
+        alt: "Starts Now - Free Tools for Students, Freelancers & Businesses",
       },
     ],
     locale: "en_US",
     type: "website",
   },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "Starts Now - Crypto Tools & Market Insights",
-  //   description: "Master the markets with Starts Now. Access essential crypto tools, deep-dive blockchain blogs, and real-time market data.",
-  //   images: ["/og-image.png"],
-  //   creator: "@YourTwitterHandle", // Optional: Add your Twitter handle if you have one
-  //   creatorId: "YourTwitterID", // Optional
-  // },
+   twitter: {
+     card: "summary_large_image",
+     title: "Free Tools for Students, Freelancers & Businesses",
+     description: "Discover free tools for students, freelancers, and businesses. Boost productivity with AI-powered writing, coding, and financial tools. No signup required, start instantly.",
+     images: ["/og-image.png"],
+     creator: "@YourTwitterHandle", // Optional: Add your Twitter handle if you have one
+     creatorId: "YourTwitterID", // Optional
+   },
 };
 
 export default function RootLayout({

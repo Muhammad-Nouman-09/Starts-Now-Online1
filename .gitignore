@@ -10,5 +10,5 @@ coverage/
 .vercel/
 .trae/
 .turbo/
-.env.local
+
 tsconfig.tsbuildinfo
