@@ -95,25 +95,18 @@ export default function HomePage() {
             <Link
               key={post.title}
               href={post.href}
-              className="flex flex-col group cursor-pointer"
+              className="glass-card p-6 rounded-xl flex flex-col group hover:border-emerald-500/50 transition-all cursor-pointer"
             >
-              <div className="aspect-video overflow-hidden rounded-xl mb-6">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
               <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3">
-                {post.badge}
+                {post.category}
               </span>
-              <h3 className="text-xl md:text-2xl font-semibold mb-3 group-hover:text-emerald-400 transition-colors leading-tight">
+              <h3 className="text-lg md:text-xl font-semibold mb-3 group-hover:text-emerald-400 transition-colors leading-tight">
                 {post.title}
               </h3>
-              <p className="text-zinc-400 text-base line-clamp-2 leading-relaxed">
+              <p className="text-zinc-400 text-sm line-clamp-2 leading-relaxed flex-grow mb-4">
                 {post.excerpt}
               </p>
+              <div className="text-xs text-zinc-500">{post.date}</div>
             </Link>
           ))}
         </div>

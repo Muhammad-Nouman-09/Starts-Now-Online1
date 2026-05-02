@@ -70,20 +70,14 @@ export const featuredTools = [
   },
 ];
 
-const defaultImages = [
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDyhf7RmcKs2M5QU4Ysv6-Opg-R0p8wkV0Im3BKxsyqMU57063AICAX6SbVFJ-po3iNSK7bk5nhHsHW-6P2PxqDlbnCuyY8baCG3UDLqQ8hJXo18jUv9az_aDVyulWnQf3zqA5PvEvJ74koYU_0Uiyvbyxv4733e19Q4G0UfFvyHvsNbfJrdkrR6GklxIMDNSEWH71XBbr70XhsbMZ0r2IPCwXfhPuF8FK8xWAlsboUSTNHTSh2f2Gpb3Vvvrvja21qOPMPezwx8WQ",
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDJJLGVNlouflXDhA4BQyVYTzadYqMSgqKOoSNvC8qOyhnm8UV4IYisLbku1SXXrzFONFF9mF2gD5tD4Ztjpb_n_WU9Uq9d4UC8qZ8uvSbzVkn1SkiHj0G2YIMvdvhtlWZpG5p8ZjCNr2cHMvraMGmIkYMVw_kOed7rWO3h0Je_z_m8Igz1LU88TtQoMQ6gSAHgfvh8mFESqMuD3quXtAPwRBu51xeyxgIx7kXDn0-kFfdPLit8jJt2zHgns8O67A4vR0m8ePwnnz0",
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuALl6xzN0aV3tl8MshT7jA2o6WK4_NILvJw6nJ3797PMZCw3mgnAbqyUCN2fdejiI7AKZJ66S8df67s5bXaBLK7sYKv_M-JZmIpsW5eOYQL28CCEKkjMSrep8xot5MRc87JCqKcQkY4Dr5tLgmn7h5QrzbwhGmUH3FAJuvJvCkQZnlrBQv6ruz16vJ_UeRpsaxrLP4Onb5Tx5G475E7SNE_vnTJby8vmBZaBWjhPgyxiyMSN1RgzG8qkPGwwNy50MJ1y5HQeOJH_CU",
-];
-
 export const blogHighlights = [...mockBlogPosts]
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .slice(0, 3)
-  .map((post, index) => ({
-    image: defaultImages[index % defaultImages.length],
-    badge: post.category.toUpperCase(),
+  .map((post) => ({
+    category: post.category,
     title: post.title,
     excerpt: post.excerpt,
+    date: post.date,
     href: `/blog/${post.id}`,
   }));
 
