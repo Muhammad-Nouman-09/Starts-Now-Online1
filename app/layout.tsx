@@ -2,17 +2,20 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import AppLayout from "@/components/AppLayout";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ 
   subsets: ["latin"],
   variable: "--font-sans",
-  display: "swap",
+  display: "optional",
+  preload: true,
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
-  display: "swap",
+  display: "optional",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -68,10 +71,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
       <body 
-        className="bg-black text-white selection:bg-emerald-500/30 antialiased font-sans"
+        className="min-h-screen bg-black text-white selection:bg-emerald-500/30 antialiased"
         suppressHydrationWarning
       >
-        <AppLayout>{children}</AppLayout>
+        <div className="flex min-h-screen flex-col overflow-x-hidden bg-zinc-950 text-white font-sans">
+          <AppLayout />
+          <main className="flex-grow w-full">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

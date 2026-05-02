@@ -1,8 +1,8 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Free Crypto Currency Converter | Starts Now",
-  description: "Instantly translate cryptocurrency values into fiat currencies like USD, PKR, and INR with our Free Crypto Currency Converter.",
+  description: "Convert cryptocurrency values to USD, PKR, and INR with the free Starts Now crypto currency converter.",
   alternates: {
     canonical: "https://starts-now-online1.vercel.app/converter",
   },

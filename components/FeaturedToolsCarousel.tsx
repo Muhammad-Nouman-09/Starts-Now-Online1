@@ -19,7 +19,7 @@ export default function FeaturedToolsCarousel() {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div className="flex min-h-[96px] flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
             Featured Power Tools
@@ -48,13 +48,13 @@ export default function FeaturedToolsCarousel() {
 
       <div
         ref={toolsScrollRef}
-        className="flex overflow-x-auto gap-6 pb-4 no-scrollbar scroll-smooth snap-x snap-mandatory"
+        className="flex min-h-[244px] overflow-x-auto gap-6 pb-4 no-scrollbar scroll-smooth snap-x snap-mandatory"
       >
         {featuredTools.map((tool) => (
           <Link
             key={tool.title}
             href={tool.href}
-            className="min-w-[280px] sm:min-w-[300px] bg-zinc-950 p-6 rounded-xl border border-zinc-800 hover:border-emerald-500/50 transition-all group shrink-0 snap-start"
+            className="min-h-[228px] min-w-[280px] sm:min-w-[300px] bg-zinc-950 p-6 rounded-xl border border-zinc-800 hover:border-emerald-500/50 transition-all group shrink-0 snap-start flex flex-col"
           >
             <div className="flex justify-between items-start mb-6">
               <tool.icon className="w-6 h-6 text-emerald-400" />
@@ -66,7 +66,7 @@ export default function FeaturedToolsCarousel() {
             <h3 className="text-xl md:text-2xl font-semibold mb-2 group-hover:text-emerald-400 transition-colors">
               {tool.title}
             </h3>
-            <p className="text-zinc-400 text-sm mb-6 leading-relaxed">
+            <p className="text-zinc-400 text-sm mb-6 leading-relaxed flex-grow min-h-[60px]">
               {tool.description}
             </p>
             <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-zinc-400">

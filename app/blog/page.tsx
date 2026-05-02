@@ -4,7 +4,6 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { BookOpen, ArrowRight, ChevronRight, ChevronLeft, Hash, Zap } from "lucide-react";
 import Link from "next/link";
 import { mockBlogPosts } from "@/constants";
-import { motion, AnimatePresence } from "motion/react";
 import AdPlacement from "@/components/AdPlacement";
 
 export default function BlogPage() {
@@ -32,8 +31,8 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12">
-      <header className="mb-10 lg:mb-16">
+    <div className="max-w-7xl mx-auto px-6 py-12 min-h-[1200px]">
+      <header className="mb-10 lg:mb-16 min-h-[86px]">
         <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-300 flex items-center gap-2 mb-2">
           <BookOpen className="w-3 h-3 text-emerald-500" />
           Insight & Analysis Archive
@@ -43,7 +42,7 @@ export default function BlogPage() {
 
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-12">
         {/* Ad in Top Position for Mobile */}
-        <div className="lg:hidden w-full mb-8">
+        <div className="lg:hidden w-full mb-8 min-h-[90px]">
            <AdPlacement type="horizontal" className="w-full" label="Mobile Briefing" />
         </div>
 
@@ -52,8 +51,8 @@ export default function BlogPage() {
           <div className="lg:sticky lg:top-12 space-y-10 lg:space-y-12">
             
             {/* Categories Section - Carousel for all screens */}
-            <section>
-              <div className="flex items-center justify-between mb-4 lg:mb-6">
+            <section className="min-h-[92px] lg:min-h-[236px]">
+              <div className="flex items-center justify-between mb-4 lg:mb-6 min-h-[24px]">
                 <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-300 flex items-center gap-2">
                    <Hash className="w-3 h-3 text-emerald-500" />
                    Intelligence Sectors
@@ -93,7 +92,7 @@ export default function BlogPage() {
             <AdPlacement type="square" className="hidden lg:flex w-full" label="Security Partner" />
 
             {/* Recent Posts Section */}
-            <section className="hidden md:block">
+            <section className="hidden md:block min-h-[344px]">
               <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-300 mb-6 flex items-center gap-2">
                  <Zap className="w-3 h-3 text-emerald-500" />
                  Latest Relays
@@ -103,7 +102,7 @@ export default function BlogPage() {
                   <Link 
                     key={`side-${post.id}`} 
                     href={`/blog/${post.id}`}
-                    className="block p-4 rounded-2xl bg-zinc-900/20 border border-zinc-900 hover:border-zinc-800 transition-all group"
+                    className="block min-h-[64px] p-4 rounded-2xl bg-zinc-900/20 border border-zinc-900 hover:border-zinc-800 transition-all group"
                   >
                     <div className="text-[8px] font-mono text-zinc-300 uppercase mb-2">{post.date}</div>
                     <div className="text-xs font-bold leading-tight line-clamp-2 group-hover:text-emerald-400 transition-colors">
@@ -115,7 +114,7 @@ export default function BlogPage() {
             </section>
 
             {/* Support / Help Section */}
-            <div className="p-6 rounded-3xl bg-emerald-500/5 border border-emerald-500/10">
+            <div className="min-h-[96px] p-6 rounded-3xl bg-emerald-500/5 border border-emerald-500/10">
               <p className="text-[10px] text-emerald-500/70 font-mono leading-relaxed italic">
                 // SYSTEM_STATUS: ALL_NODES_OPERATIONAL
                 <br />
@@ -127,23 +126,17 @@ export default function BlogPage() {
 
         {/* Main Content Area */}
         <main className="flex-1 min-w-0">
-          <div className="mb-12 flex items-center justify-between">
+          <div className="mb-12 flex min-h-[36px] items-center justify-between">
             <h2 className="text-2xl font-bold tracking-tight italic text-zinc-400">
                {activeCategory} <span className="text-[10px] font-mono not-italic text-zinc-700 ml-4">Found {filteredPosts.length} Results</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pb-12">
-            <AnimatePresence mode="popLayout">
-              {filteredPosts.map((post) => (
-                <motion.div 
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  key={post.id} 
-                  className="bg-zinc-900/20 border border-zinc-900 p-8 lg:p-10 rounded-[40px] flex flex-col justify-between group hover:border-emerald-500/20 hover:bg-zinc-900/40 transition-all shadow-xl w-full"
+          <div className="grid min-h-[760px] grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pb-12 auto-rows-fr">
+            {filteredPosts.map((post) => (
+                <div
+                  key={post.id}
+                  className="min-h-[340px] bg-zinc-900/20 border border-zinc-900 p-8 lg:p-10 rounded-[40px] flex flex-col justify-between group hover:border-emerald-500/20 hover:bg-zinc-900/40 transition-all shadow-xl w-full"
                 >
                   <div>
                     <div className="flex items-center gap-4 text-[9px] font-mono font-bold uppercase tracking-widest text-zinc-300 mb-6 group-hover:text-emerald-500 transition-colors">
@@ -172,16 +165,13 @@ export default function BlogPage() {
                       <ArrowRight className="w-5 h-5" />
                     </Link>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </AnimatePresence>
           </div>
 
           {/* Scroll cue for main content */}
           <div className="mt-8 mb-12 flex justify-center">
-             <motion.div
-               animate={{ y: [0, 8, 0] }}
-               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+             <div
                className="flex flex-col items-center gap-2 opacity-40 group cursor-pointer"
                onClick={() => window.scrollTo({ top: window.scrollY + 400, behavior: 'smooth' })}
              >
@@ -189,13 +179,13 @@ export default function BlogPage() {
                 <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-emerald-500/30 transition-colors bg-zinc-900/50">
                    <ChevronRight className="w-5 h-5 rotate-90 text-emerald-500" />
                 </div>
-             </motion.div>
+             </div>
           </div>
 
           <AdPlacement type="horizontal" className="mt-16 w-full" label="Briefing Sponsor" />
 
           {/* Featured Newsletter Box */}
-          <section className="mt-24 p-10 lg:p-16 rounded-[40px] bg-zinc-900/40 border border-zinc-800 relative overflow-hidden group">
+          <section className="mt-24 min-h-[360px] p-10 lg:p-16 rounded-[40px] bg-zinc-900/40 border border-zinc-800 relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10">
               <BookOpen className="w-32 h-32 text-emerald-500" />
             </div>

@@ -10,10 +10,8 @@ import {
   Calculator,
   ChevronDown,
   Coins,
-  Globe,
   LogOut,
   Menu,
-  Share2,
   Users,
   X,
 } from "lucide-react";
@@ -40,9 +38,7 @@ const dropdowns = [
   { label: "Business", icon: Building2, items: businessTools },
 ];
 
-const standaloneItems = [
-  { name: "Intelligence", path: "/blog", icon: BookOpen },
-];
+const standaloneItems = [{ name: "Intelligence", path: "/blog", icon: BookOpen }];
 
 function NavDropdown({
   label,
@@ -134,9 +130,9 @@ function DesktopProfileMenu({
 }) {
   return (
     <div className="relative group">
-      <button className="flex max-w-[220px] items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-1.5 text-left transition-colors hover:border-emerald-400/40">
+      <button className="flex h-10 w-[220px] items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-1.5 text-left transition-colors hover:border-emerald-400/40">
         <ProfileAvatar profile={profile} />
-        <span className="min-w-0">
+        <span className="min-w-0 flex-1">
           <span className="block truncate text-sm font-bold text-white">{profile.full_name}</span>
           <span className="block truncate text-[10px] font-semibold uppercase tracking-widest text-zinc-300">
             Profile
@@ -181,7 +177,7 @@ function MobileProfilePanel({
         <ProfileAvatar profile={profile} />
         <div className="min-w-0">
           <p className="truncate text-sm font-bold text-white">{profile.full_name}</p>
-            <p className="truncate text-xs text-zinc-300">{profile.email}</p>
+          <p className="truncate text-xs text-zinc-300">{profile.email}</p>
         </div>
       </div>
       <button
@@ -196,7 +192,7 @@ function MobileProfilePanel({
   );
 }
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default function AppLayout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [authLoaded, setAuthLoaded] = useState(!isSupabaseConfigured);
   const [profile, setProfile] = useState<UserProfile | null>(null);
@@ -255,7 +251,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const desktopAuth = profile ? (
     <DesktopProfileMenu profile={profile} onSignOut={handleSignOut} />
   ) : (
-    <>
+    <div className="flex h-10 w-[220px] items-center justify-end gap-4">
       <Link
         href="/login"
         className="text-sm font-semibold text-zinc-400 hover:text-emerald-400 transition-colors"
@@ -268,11 +264,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       >
         Get Started
       </Link>
-    </>
+    </div>
   );
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white font-sans selection:bg-emerald-400/30 overflow-x-hidden flex flex-col">
+    <header className="h-16 shrink-0">
       <nav className="fixed top-0 w-full z-[100] bg-[#0F1113]/80 backdrop-blur-md border-b border-zinc-800/60">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-8">
@@ -307,8 +303,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
-            {authLoaded ? desktopAuth : <div className="h-9 w-36 animate-pulse rounded-lg bg-zinc-900" />}
+          <div className="hidden md:flex h-10 w-[220px] items-center justify-end">
+            {authLoaded ? desktopAuth : <div className="h-10 w-[220px] animate-pulse rounded-lg bg-zinc-900" />}
           </div>
 
           <button
@@ -394,53 +390,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </div>
         )}
       </nav>
-
-      <main className="flex-1 pt-16">{children}</main>
-
-      <footer className="bg-[#0F1113] w-full border-t border-zinc-800/60">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 px-6 md:px-8 py-16 max-w-7xl mx-auto">
-          <div className="col-span-2">
-            <span className="text-lg font-bold text-emerald-400 block mb-4">Starts Now</span>
-            <p className="text-zinc-300 text-sm max-w-xs mb-6 leading-relaxed">
-              High-performance tools for power users. Built for the modern economy.
-            </p>
-            <div className="flex gap-4">
-              <a href="#" aria-label="Visit our website" className="text-zinc-300 hover:text-emerald-400 transition-colors">
-                <Globe className="w-5 h-5" />
-              </a>
-              <a href="#" aria-label="Share on social media" className="text-zinc-300 hover:text-emerald-400 transition-colors">
-                <Share2 className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <span className="text-xs font-medium uppercase tracking-widest text-emerald-400">Products</span>
-            <Link href="/market" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Crypto Tools</Link>
-            <Link href="#" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Office Tools</Link>
-            <Link href="#" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Freelancer Tools</Link>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <span className="text-xs font-medium uppercase tracking-widest text-emerald-400">Company</span>
-            <Link href="#" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Business Tools</Link>
-            <Link href="/blog" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Intelligence</Link>
-            <Link href="/blog" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Latest Blogs</Link>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <span className="text-xs font-medium uppercase tracking-widest text-emerald-400">Legal</span>
-            <Link href="/privacy" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Terms of Service</Link>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 md:px-8 py-8 border-t border-zinc-800/60 text-center">
-          <p className="text-zinc-400 text-[10px] uppercase tracking-[0.2em]">
-            Copyright 2026 Starts Now. High-performance tools for power users.
-          </p>
-        </div>
-      </footer>
-    </div>
+    </header>
   );
 }
