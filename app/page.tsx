@@ -106,7 +106,7 @@ export default function HomePage() {
               <p className="text-zinc-400 text-sm line-clamp-2 leading-relaxed flex-grow mb-4">
                 {post.excerpt}
               </p>
-              <div className="text-xs text-zinc-500">{post.date}</div>
+              <div className="text-xs text-zinc-300">{post.date}</div>
             </Link>
           ))}
         </div>

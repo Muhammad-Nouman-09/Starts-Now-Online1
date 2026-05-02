@@ -39,7 +39,7 @@ export default function MarketRegistry() {
     <div className="max-w-7xl mx-auto px-6 py-12">
       <header className="mb-8 lg:mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
-          <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-500 flex items-center gap-2 mb-2">
+          <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-300 flex items-center gap-2 mb-2">
             <LayoutDashboard className="w-3 h-3 text-emerald-500" />
             Global Asset Registry
           </h1>
@@ -48,7 +48,7 @@ export default function MarketRegistry() {
 
         <div className="flex w-full md:w-auto gap-3">
           <div className="relative flex-1 md:w-64">
-             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
+             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
              <input 
               type="text" 
               placeholder="Asset filter..."
@@ -76,12 +76,12 @@ export default function MarketRegistry() {
           <table className="w-full text-left border-collapse min-w-[500px] md:min-w-[600px]">
             <thead>
               <tr className="border-b border-zinc-900 bg-zinc-900/40">
-                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-500">Asset</th>
-                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-500 text-right">Price</th>
-                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-500 text-right">24H Change</th>
-                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-500 text-right hidden sm:table-cell">Market Cap</th>
-                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-500 text-right hidden lg:table-cell">24H Volume</th>
-                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-500"></th>
+                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-300">Asset</th>
+                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-300 text-right">Price</th>
+                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-300 text-right">24H Change</th>
+                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-300 text-right hidden sm:table-cell">Market Cap</th>
+                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-300 text-right hidden lg:table-cell">24H Volume</th>
+                <th className="px-4 md:px-6 py-4 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-300"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-900/50">
@@ -170,15 +170,15 @@ export default function MarketRegistry() {
             <div className="space-y-4">
               <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
                 <h4 className="font-bold text-zinc-300 mb-1">What is a Crypto Market Explorer?</h4>
-                <p className="text-sm text-zinc-500">A dashboard that aggregates real-time data, pricing, and volume for various cryptocurrencies.</p>
+                <p className="text-sm text-zinc-300">A dashboard that aggregates real-time data, pricing, and volume for various cryptocurrencies.</p>
               </div>
               <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
                 <h4 className="font-bold text-zinc-300 mb-1">How is the 24H change calculated?</h4>
-                <p className="text-sm text-zinc-500">It compares the current asset price to its exact price 24 hours ago, showing the percentage difference.</p>
+                <p className="text-sm text-zinc-300">It compares the current asset price to its exact price 24 hours ago, showing the percentage difference.</p>
               </div>
               <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
                 <h4 className="font-bold text-zinc-300 mb-1">Are the prices updated in real-time?</h4>
-                <p className="text-sm text-zinc-500">Yes, the explorer fetches the latest available data to ensure you have the most up-to-date market overview.</p>
+                <p className="text-sm text-zinc-300">Yes, the explorer fetches the latest available data to ensure you have the most up-to-date market overview.</p>
               </div>
             </div>
           </div>

@@ -49,7 +49,7 @@ export default function ConverterPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <header className="mb-8 md:mb-12">
-        <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-500 flex items-center gap-2 mb-2">
+        <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-300 flex items-center gap-2 mb-2">
           <ArrowLeftRight className="w-3 h-3 text-emerald-500" />
           Global Exchange Bridge
         </h1>
@@ -62,7 +62,7 @@ export default function ConverterPage() {
         <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] md:rounded-[40px] p-6 sm:p-8 lg:p-16 max-w-4xl mx-auto shadow-3xl">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="flex-1 w-full space-y-4">
-             <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 block pl-2 font-mono">Asset Volume</label>
+             <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 block pl-2 font-mono">Asset Volume</label>
              <div className="flex items-center gap-4 bg-zinc-900 rounded-2xl p-4 border border-zinc-800 focus-within:border-emerald-500/50 transition-all">
                 <input 
                   type="number" 
@@ -87,7 +87,7 @@ export default function ConverterPage() {
           </div>
 
           <div className="flex-1 w-full space-y-4">
-             <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 block pl-2 font-mono">Target Fiat</label>
+             <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 block pl-2 font-mono">Target Fiat</label>
              <div className="flex items-center gap-4 bg-zinc-900 rounded-2xl p-4 border border-zinc-800 focus-within:border-indigo-500/50 transition-all">
                 <div className="text-xl md:text-2xl font-bold font-mono w-full truncate">
                   {getTargetValue().toLocaleString(undefined, { maximumFractionDigits: targetCurrency === 'USD' ? 6 : 2 })}
@@ -159,15 +159,15 @@ export default function ConverterPage() {
             <div className="space-y-4">
               <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
                 <h4 className="font-bold text-zinc-300 mb-1">What is a Crypto Currency Converter?</h4>
-                <p className="text-sm text-zinc-500">It is a tool that calculates the equivalent value of a cryptocurrency in traditional fiat money.</p>
+                <p className="text-sm text-zinc-300">It is a tool that calculates the equivalent value of a cryptocurrency in traditional fiat money.</p>
               </div>
               <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
                 <h4 className="font-bold text-zinc-300 mb-1">How often are the exchange rates updated?</h4>
-                <p className="text-sm text-zinc-500">Our global exchange bridge synchronizes with real-time feeds to provide accurate and up-to-date pricing.</p>
+                <p className="text-sm text-zinc-300">Our global exchange bridge synchronizes with real-time feeds to provide accurate and up-to-date pricing.</p>
               </div>
               <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
                 <h4 className="font-bold text-zinc-300 mb-1">Can I convert to local currencies like PKR or INR?</h4>
-                <p className="text-sm text-zinc-500">Yes, the tool supports direct conversion from crypto to major fiat currencies including USD, PKR, and INR.</p>
+                <p className="text-sm text-zinc-300">Yes, the tool supports direct conversion from crypto to major fiat currencies including USD, PKR, and INR.</p>
               </div>
             </div>
           </div>

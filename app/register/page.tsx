@@ -109,13 +109,13 @@ export default function RegisterPage() {
             Starts Now
           </Link>
           <h1 className="text-2xl font-bold text-white tracking-tight">Create your account</h1>
-          <p className="text-zinc-500 text-sm mt-2">Join thousands of professionals using our terminal</p>
+          <p className="text-zinc-300 text-sm mt-2">Join thousands of professionals using our terminal</p>
         </div>
 
         <div className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800 rounded-2xl p-8 shadow-2xl shadow-black/50">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-1">Full Name</label>
+              <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 ml-1">Full Name</label>
               <div className="relative">
                 <input
                   type="text"
@@ -130,7 +130,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-1">Email Address</label>
+              <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 ml-1">Email Address</label>
               <div className="relative">
                 <input
                   type="email"
@@ -145,7 +145,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-1">Password</label>
+              <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 ml-1">Password</label>
               <div className="relative">
                 <input
                   type="password"
@@ -170,7 +170,7 @@ export default function RegisterPage() {
                   className="w-4 h-4 rounded border-zinc-800 bg-zinc-950 text-emerald-500 focus:ring-emerald-500/50 transition-all cursor-pointer"
                 />
               </div>
-              <p className="text-[10px] text-zinc-500 leading-relaxed uppercase tracking-tighter font-bold">
+              <p className="text-[10px] text-zinc-300 leading-relaxed uppercase tracking-tighter font-bold">
                 I agree to the <Link href="/terms" className="text-emerald-500 hover:underline underline-offset-2">Terms of Service</Link> and <Link href="/privacy" className="text-emerald-500 hover:underline underline-offset-2">Privacy Policy</Link>
               </p>
             </div>
@@ -206,7 +206,7 @@ export default function RegisterPage() {
               <div className="w-full border-t border-zinc-800"></div>
             </div>
             <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-widest">
-              <span className="bg-[#0f1113] px-4 text-zinc-600">Or sign up with</span>
+              <span className="bg-[#0f1113] px-4 text-zinc-300">Or sign up with</span>
             </div>
           </div>
 
@@ -227,7 +227,7 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        <p className="text-center mt-8 text-zinc-500 text-sm">
+        <p className="text-center mt-8 text-zinc-300 text-sm">
           Already have an account?{" "}
           <Link href="/login" className="text-emerald-400 font-bold hover:underline underline-offset-4">
             Sign in here

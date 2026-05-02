@@ -18,7 +18,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
-      <Link href="/blog" className="inline-flex items-center gap-2 text-zinc-500 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest mb-12">
+      <Link href="/blog" className="inline-flex items-center gap-2 text-zinc-300 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest mb-12">
         <ArrowLeft className="w-4 h-4" /> Back to Archives
       </Link>
 
@@ -63,10 +63,10 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
           <section className="mt-16 md:mt-20 pt-12 border-t border-zinc-900">
              <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
-                <h4 className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest font-mono">Related Intelligence Tags</h4>
+                <h4 className="text-[10px] font-bold text-zinc-300 uppercase tracking-widest font-mono">Related Intelligence Tags</h4>
                 <div className="flex flex-wrap gap-2">
                    {["CRYPTO", "MARKETS", "TECH", "2026", post.category.toUpperCase().replace(/\s+/g, '_')].map(tag => (
-                     <span key={tag} className="text-[8px] font-mono text-zinc-500 px-2 py-1 border border-zinc-900 rounded bg-zinc-950">{tag}</span>
+                     <span key={tag} className="text-[8px] font-mono text-zinc-300 px-2 py-1 border border-zinc-900 rounded bg-zinc-950">{tag}</span>
                    ))}
                 </div>
              </div>
@@ -77,7 +77,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
         <aside className="w-full lg:w-80 shrink-0">
           <div className="lg:sticky lg:top-12 space-y-10 lg:space-y-12">
             <section>
-              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600 mb-6 flex items-center gap-2">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-300 mb-6 flex items-center gap-2">
                  <Hash className="w-3 h-3 text-emerald-500" />
                  Sectors
               </h3>
@@ -89,7 +89,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
                     className={`whitespace-nowrap flex items-center justify-between px-4 py-2.5 lg:py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all ${
                       post.category === cat 
                         ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" 
-                        : "bg-zinc-900/40 text-zinc-500 border border-transparent hover:bg-zinc-900 hover:text-zinc-300"
+                        : "bg-zinc-900/40 text-zinc-300 border border-transparent hover:bg-zinc-900 hover:text-white"
                     }`}
                   >
                     {cat}
@@ -102,7 +102,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             <AdPlacement type="square" className="w-full" label="Briefing Sponsor" />
 
             <section>
-              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600 mb-6 flex items-center gap-2">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-300 mb-6 flex items-center gap-2">
                  <Zap className="w-3 h-3 text-emerald-500" />
                  Latest Relays
               </h3>
@@ -113,7 +113,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
                     href={`/blog/${p.id}`}
                     className="block p-4 rounded-2xl bg-zinc-900/20 border border-zinc-900 hover:border-zinc-800 transition-all group"
                   >
-                    <div className="text-[8px] font-mono text-zinc-600 uppercase mb-2">{p.date}</div>
+                    <div className="text-[8px] font-mono text-zinc-300 uppercase mb-2">{p.date}</div>
                     <div className="text-xs font-bold leading-tight line-clamp-2 group-hover:text-emerald-400 transition-colors">
                       {p.title}
                     </div>
@@ -126,7 +126,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
                <h4 className="text-[10px] font-bold text-zinc-400 mb-4 flex items-center gap-2">
                  <BookOpen className="w-3 h-3" /> Tactical Intel
                </h4>
-               <p className="text-[9px] text-zinc-600 leading-relaxed font-mono">
+               <p className="text-[9px] text-zinc-300 leading-relaxed font-mono">
                  This report was transmitted at high-frequency and verified by three independent relay nodes.
                  Encryption: ZK_PROCESSED_V4
                </p>

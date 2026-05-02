@@ -28,7 +28,7 @@ export default function HeroSearch() {
         className="flex flex-col sm:flex-row gap-3 p-2 bg-zinc-900/80 rounded-xl border border-zinc-800 shadow-2xl relative z-20"
       >
         <div className="flex-1 flex items-center px-4 gap-3">
-          <Search className="w-5 h-5 text-zinc-600 shrink-0" />
+          <Search className="w-5 h-5 text-zinc-400 shrink-0" />
           <input
             type="text"
             value={searchQuery}
@@ -75,7 +75,7 @@ export default function HeroSearch() {
               ))}
             </div>
           ) : (
-            <div className="p-8 text-center text-zinc-500 text-sm">
+            <div className="p-8 text-center text-zinc-300 text-sm">
               No tools found matching "{searchQuery}"
             </div>
           )}

@@ -68,7 +68,7 @@ export default function ProfitCalculatorPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <header className="mb-8 md:mb-12">
-        <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-500 flex items-center gap-2 mb-2">
+        <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-300 flex items-center gap-2 mb-2">
           <Calculator className="w-3 h-3 text-emerald-500" />
           ROI Simulator
         </h1>
@@ -82,7 +82,7 @@ export default function ProfitCalculatorPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Asset Selection */}
               <div className="space-y-4">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 block pl-2 font-mono">Target Asset</label>
+                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 block pl-2 font-mono">Target Asset</label>
                 <div className="relative group">
                   <select 
                     value={selectedCoin.symbol}
@@ -93,19 +93,19 @@ export default function ProfitCalculatorPage() {
                       <option key={c.symbol} value={c.symbol}>{c.name} ({c.symbol})</option>
                     ))}
                   </select>
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-600 group-hover:text-emerald-500 transition-colors">
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400 group-hover:text-emerald-500 transition-colors">
                     <RefreshCw className="w-4 h-4" />
                   </div>
                 </div>
                 <div className="flex justify-between px-2">
-                   <span className="text-[10px] text-zinc-500 font-mono">Market Price:</span>
+                   <span className="text-[10px] text-zinc-300 font-mono">Market Price:</span>
                    <span className="text-[10px] text-emerald-500 font-mono font-bold">${selectedCoin.usdPrice.toLocaleString()}</span>
                 </div>
               </div>
 
               {/* Investment Amount */}
               <div className="space-y-4">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 block pl-2 font-mono">Initial Capital (USD)</label>
+                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 block pl-2 font-mono">Initial Capital (USD)</label>
                 <div className="relative">
                   <input 
                     type="number"
@@ -113,7 +113,7 @@ export default function ProfitCalculatorPage() {
                     onChange={(e) => setInvestment(Number(e.target.value))}
                     className="w-full bg-zinc-950 border border-zinc-800 rounded-2xl p-4 text-lg font-bold focus:border-emerald-500/50 outline-none transition-all pl-10"
                   />
-                  <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
+                  <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                 </div>
               </div>
             </div>
@@ -121,7 +121,7 @@ export default function ProfitCalculatorPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Buy Price */}
               <div className="space-y-4">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 block pl-2 font-mono">Entry Price</label>
+                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 block pl-2 font-mono">Entry Price</label>
                 <div className="relative">
                   <input 
                     type="number"
@@ -141,7 +141,7 @@ export default function ProfitCalculatorPage() {
 
               {/* Sell Price */}
               <div className="space-y-4">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 block pl-2 font-mono">Exit Price (Target)</label>
+                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 block pl-2 font-mono">Exit Price (Target)</label>
                 <div className="relative">
                   <input 
                     type="number"
@@ -168,7 +168,7 @@ export default function ProfitCalculatorPage() {
             {/* Fees Panel */}
             <div className="pt-8 border-t border-zinc-900 grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 block pl-2 font-mono">Inbound Fee (%)</label>
+                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 block pl-2 font-mono">Inbound Fee (%)</label>
                 <div className="relative">
                   <input 
                     type="number"
@@ -180,7 +180,7 @@ export default function ProfitCalculatorPage() {
                 </div>
               </div>
               <div className="space-y-4">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 block pl-2 font-mono">Outbound Fee (%)</label>
+                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 block pl-2 font-mono">Outbound Fee (%)</label>
                 <div className="relative">
                   <input 
                     type="number"
@@ -202,10 +202,10 @@ export default function ProfitCalculatorPage() {
              <div className={`absolute top-0 right-0 w-32 h-32 blur-[80px] -mr-16 -mt-16 transition-colors duration-500 ${isProfit ? 'bg-emerald-500/20' : 'bg-rose-500/20'}`} />
 
              <div className="space-y-1 mb-8">
-               <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 font-mono">Projected P&L</span>
+               <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 font-mono">Projected P&L</span>
                <div className={`text-4xl font-black tracking-tighter ${isProfit ? 'text-emerald-400' : 'text-rose-400'}`}>
                  {isProfit ? '+' : ''}{profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                 <span className="text-xl ml-1 text-zinc-500">USD</span>
+                 <span className="text-xl ml-1 text-zinc-300">USD</span>
                </div>
              </div>
 
@@ -226,11 +226,11 @@ export default function ProfitCalculatorPage() {
 
              <div className="space-y-4 pt-6 border-t border-zinc-900">
                <div className="flex justify-between items-center">
-                 <span className="text-xs text-zinc-500">Asset Balance</span>
+                 <span className="text-xs text-zinc-300">Asset Balance</span>
                  <span className="text-xs font-bold font-mono">{coinAmount.toLocaleString(undefined, { maximumFractionDigits: 6 })} {selectedCoin.symbol}</span>
                </div>
                <div className="flex justify-between items-center">
-                 <span className="text-xs text-zinc-500">Total Fees</span>
+                 <span className="text-xs text-zinc-300">Total Fees</span>
                  <span className="text-xs font-bold font-mono text-rose-500/60">-${(exitFeeAmount + (investment * (investmentFee/100))).toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
                </div>
              </div>
@@ -285,15 +285,15 @@ export default function ProfitCalculatorPage() {
             <div className="space-y-4">
               <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
                 <h4 className="font-bold text-zinc-300 mb-1">What is a Crypto Profit Calculator?</h4>
-                <p className="text-sm text-zinc-500">A tool that computes the net profit or loss of a cryptocurrency trade based on your entry and exit prices.</p>
+                <p className="text-sm text-zinc-300">A tool that computes the net profit or loss of a cryptocurrency trade based on your entry and exit prices.</p>
               </div>
               <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
                 <h4 className="font-bold text-zinc-300 mb-1">How is crypto profit calculated?</h4>
-                <p className="text-sm text-zinc-500">The basic formula is: Profit = (Exit Price × Coin Amount) - Initial Investment - Total Fees.</p>
+                <p className="text-sm text-zinc-300">The basic formula is: Profit = (Exit Price × Coin Amount) - Initial Investment - Total Fees.</p>
               </div>
               <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
                 <h4 className="font-bold text-zinc-300 mb-1">Does this calculator include trading fees?</h4>
-                <p className="text-sm text-zinc-500">Yes, you can input both inbound (buying) and outbound (selling) fee percentages to get an accurate net return.</p>
+                <p className="text-sm text-zinc-300">Yes, you can input both inbound (buying) and outbound (selling) fee percentages to get an accurate net return.</p>
               </div>
             </div>
           </div>

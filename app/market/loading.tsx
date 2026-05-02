@@ -21,7 +21,7 @@ export default function Loading() {
             <span className="animate-[ping_1.5s_infinite_300ms] rounded-full">.</span>
             <span className="animate-[ping_1.5s_infinite_600ms] rounded-full">.</span>
           </h3>
-          <p className="text-sm text-zinc-500">Connecting to crypto network</p>
+          <p className="text-sm text-zinc-300">Connecting to crypto network</p>
         </div>
       </div>
     </div>

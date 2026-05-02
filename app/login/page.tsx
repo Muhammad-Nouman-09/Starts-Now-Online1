@@ -116,13 +116,13 @@ export default function LoginPage() {
             Starts Now
           </Link>
           <h1 className="text-2xl font-bold text-white tracking-tight">Welcome back</h1>
-          <p className="text-zinc-500 text-sm mt-2">Enter your credentials to access your terminal</p>
+          <p className="text-zinc-300 text-sm mt-2">Enter your credentials to access your terminal</p>
         </div>
 
         <div className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800 rounded-2xl p-8 shadow-2xl shadow-black/50">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-1">Email Address</label>
+              <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 ml-1">Email Address</label>
               <div className="relative">
                 <input
                   type="email"
@@ -138,7 +138,7 @@ export default function LoginPage() {
 
             <div className="space-y-2">
               <div className="flex justify-between items-center px-1">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Password</label>
+                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Password</label>
                 <button
                   type="button"
                   onClick={handlePasswordReset}
@@ -191,7 +191,7 @@ export default function LoginPage() {
               <div className="w-full border-t border-zinc-800"></div>
             </div>
             <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-widest">
-              <span className="bg-[#0f1113] px-4 text-zinc-600">Or continue with</span>
+              <span className="bg-[#0f1113] px-4 text-zinc-300">Or continue with</span>
             </div>
           </div>
 
@@ -212,7 +212,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <p className="text-center mt-8 text-zinc-500 text-sm">
+        <p className="text-center mt-8 text-zinc-300 text-sm">
           Don&apos;t have an account?{" "}
           <Link href="/register" className="text-emerald-400 font-bold hover:underline underline-offset-4">
             Sign up now

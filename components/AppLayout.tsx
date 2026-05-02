@@ -76,9 +76,9 @@ function NavDropdown({
 
           {isEmpty ? (
             <div className="flex flex-col items-center justify-center gap-2 py-6 px-6 text-center">
-              <Icon className="w-5 h-5 text-zinc-700" />
-              <p className="text-xs font-bold uppercase tracking-widest text-zinc-600">Coming Soon</p>
-              <p className="text-[10px] text-zinc-700 font-mono leading-relaxed">
+              <Icon className="w-5 h-5 text-zinc-400" />
+              <p className="text-xs font-bold uppercase tracking-widest text-zinc-300">Coming Soon</p>
+              <p className="text-[10px] text-zinc-400 font-mono leading-relaxed">
                 Tools will be added here shortly.
               </p>
             </div>
@@ -138,11 +138,11 @@ function DesktopProfileMenu({
         <ProfileAvatar profile={profile} />
         <span className="min-w-0">
           <span className="block truncate text-sm font-bold text-white">{profile.full_name}</span>
-          <span className="block truncate text-[10px] font-semibold uppercase tracking-widest text-zinc-500">
+          <span className="block truncate text-[10px] font-semibold uppercase tracking-widest text-zinc-300">
             Profile
           </span>
         </span>
-        <ChevronDown className="h-3 w-3 shrink-0 text-zinc-500 transition-transform group-hover:rotate-180" />
+        <ChevronDown className="h-3 w-3 shrink-0 text-zinc-300 transition-transform group-hover:rotate-180" />
       </button>
 
       <div className="absolute right-0 top-full z-50 pt-3 opacity-0 pointer-events-none transition-all duration-200 group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:pointer-events-auto">
@@ -151,7 +151,7 @@ function DesktopProfileMenu({
             <ProfileAvatar profile={profile} />
             <div className="min-w-0">
               <p className="truncate text-sm font-bold text-white">{profile.full_name}</p>
-              <p className="truncate text-xs text-zinc-500">{profile.email}</p>
+              <p className="truncate text-xs text-zinc-300">{profile.email}</p>
             </div>
           </div>
           <button
@@ -181,7 +181,7 @@ function MobileProfilePanel({
         <ProfileAvatar profile={profile} />
         <div className="min-w-0">
           <p className="truncate text-sm font-bold text-white">{profile.full_name}</p>
-          <p className="truncate text-xs text-zinc-500">{profile.email}</p>
+            <p className="truncate text-xs text-zinc-300">{profile.email}</p>
         </div>
       </div>
       <button
@@ -323,12 +323,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <div className="md:hidden border-t border-zinc-800 bg-zinc-950 p-6 space-y-4 max-h-[80vh] overflow-y-auto">
             {dropdowns.map((dd) => (
               <div key={dd.label}>
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600 px-2 pb-2 flex items-center gap-2">
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-300 px-2 pb-2 flex items-center gap-2">
                   <dd.icon className="w-3 h-3" />
                   {dd.label}
                 </p>
                 {dd.items.length === 0 ? (
-                  <p className="text-[10px] font-mono text-zinc-700 px-2 pb-2">Coming soon...</p>
+                  <p className="text-[10px] font-mono text-zinc-400 px-2 pb-2">Coming soon...</p>
                 ) : (
                   dd.items.map((item) => (
                     <Link
@@ -339,7 +339,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                         "flex items-center gap-4 text-xs font-bold uppercase tracking-widest p-2 rounded-lg",
                         pathname === item.path
                           ? "text-emerald-400 bg-emerald-500/5"
-                          : "text-zinc-500 hover:text-zinc-300"
+                          : "text-zinc-300 hover:text-white"
                       )}
                     >
                       <item.icon className="w-4 h-4" />
@@ -359,7 +359,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                     "flex items-center gap-4 text-xs font-bold uppercase tracking-widest p-2 rounded-lg",
                     pathname === item.path
                       ? "text-emerald-400 bg-emerald-500/5"
-                      : "text-zinc-500 hover:text-zinc-300"
+                      : "text-zinc-300 hover:text-white"
                   )}
                 >
                   <item.icon className="w-4 h-4" />
@@ -401,14 +401,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 px-6 md:px-8 py-16 max-w-7xl mx-auto">
           <div className="col-span-2">
             <span className="text-lg font-bold text-emerald-400 block mb-4">Starts Now</span>
-            <p className="text-zinc-500 text-sm max-w-xs mb-6 leading-relaxed">
+            <p className="text-zinc-300 text-sm max-w-xs mb-6 leading-relaxed">
               High-performance tools for power users. Built for the modern economy.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-zinc-500 hover:text-emerald-400 transition-colors">
+              <a href="#" aria-label="Visit our website" className="text-zinc-300 hover:text-emerald-400 transition-colors">
                 <Globe className="w-5 h-5" />
               </a>
-              <a href="#" className="text-zinc-500 hover:text-emerald-400 transition-colors">
+              <a href="#" aria-label="Share on social media" className="text-zinc-300 hover:text-emerald-400 transition-colors">
                 <Share2 className="w-5 h-5" />
               </a>
             </div>
@@ -416,27 +416,27 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
           <div className="flex flex-col gap-4">
             <span className="text-xs font-medium uppercase tracking-widest text-emerald-400">Products</span>
-            <Link href="/market" className="text-zinc-500 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Crypto Tools</Link>
-            <Link href="#" className="text-zinc-500 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Office Tools</Link>
-            <Link href="#" className="text-zinc-500 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Freelancer Tools</Link>
+            <Link href="/market" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Crypto Tools</Link>
+            <Link href="#" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Office Tools</Link>
+            <Link href="#" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Freelancer Tools</Link>
           </div>
 
           <div className="flex flex-col gap-4">
             <span className="text-xs font-medium uppercase tracking-widest text-emerald-400">Company</span>
-            <Link href="#" className="text-zinc-500 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Business Tools</Link>
-            <Link href="/blog" className="text-zinc-500 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Intelligence</Link>
-            <Link href="/blog" className="text-zinc-500 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Latest Blogs</Link>
+            <Link href="#" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Business Tools</Link>
+            <Link href="/blog" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Intelligence</Link>
+            <Link href="/blog" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Latest Blogs</Link>
           </div>
 
           <div className="flex flex-col gap-4">
             <span className="text-xs font-medium uppercase tracking-widest text-emerald-400">Legal</span>
-            <Link href="/privacy" className="text-zinc-500 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="text-zinc-500 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Terms of Service</Link>
           </div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-8 border-t border-zinc-800/60 text-center">
-          <p className="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">
+          <p className="text-zinc-400 text-[10px] uppercase tracking-[0.2em]">
             Copyright 2026 Starts Now. High-performance tools for power users.
           </p>
         </div>

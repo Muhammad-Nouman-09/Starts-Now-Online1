@@ -34,7 +34,7 @@ export default function BlogPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <header className="mb-10 lg:mb-16">
-        <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-500 flex items-center gap-2 mb-2">
+        <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-300 flex items-center gap-2 mb-2">
           <BookOpen className="w-3 h-3 text-emerald-500" />
           Insight & Analysis Archive
         </h1>
@@ -54,15 +54,15 @@ export default function BlogPage() {
             {/* Categories Section - Carousel for all screens */}
             <section>
               <div className="flex items-center justify-between mb-4 lg:mb-6">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600 flex items-center gap-2">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-300 flex items-center gap-2">
                    <Hash className="w-3 h-3 text-emerald-500" />
                    Intelligence Sectors
                 </h3>
                 <div className="flex gap-1 lg:hidden">
-                  <button onClick={() => scrollSectors('left')} className="w-6 h-6 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-600 hover:text-emerald-500 transition-colors bg-zinc-950">
+                  <button onClick={() => scrollSectors('left')} className="w-6 h-6 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-500 transition-colors bg-zinc-950">
                     <ChevronLeft className="w-3 h-3" />
                   </button>
-                  <button onClick={() => scrollSectors('right')} className="w-6 h-6 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-600 hover:text-emerald-500 transition-colors bg-zinc-950">
+                  <button onClick={() => scrollSectors('right')} className="w-6 h-6 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-500 transition-colors bg-zinc-950">
                     <ChevronRight className="w-3 h-3" />
                   </button>
                 </div>
@@ -79,7 +79,7 @@ export default function BlogPage() {
                       className={`whitespace-nowrap flex items-center justify-between px-4 py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all shrink-0 ${
                         activeCategory === cat 
                           ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" 
-                          : "bg-zinc-900/40 text-zinc-500 border border-transparent hover:bg-zinc-900 hover:text-zinc-300 shadow-xl"
+                          : "bg-zinc-900/40 text-zinc-300 border border-transparent hover:bg-zinc-900 hover:text-white shadow-xl"
                       }`}
                     >
                       {cat}
@@ -94,7 +94,7 @@ export default function BlogPage() {
 
             {/* Recent Posts Section */}
             <section className="hidden md:block">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600 mb-6 flex items-center gap-2">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-300 mb-6 flex items-center gap-2">
                  <Zap className="w-3 h-3 text-emerald-500" />
                  Latest Relays
               </h3>
@@ -105,7 +105,7 @@ export default function BlogPage() {
                     href={`/blog/${post.id}`}
                     className="block p-4 rounded-2xl bg-zinc-900/20 border border-zinc-900 hover:border-zinc-800 transition-all group"
                   >
-                    <div className="text-[8px] font-mono text-zinc-600 uppercase mb-2">{post.date}</div>
+                    <div className="text-[8px] font-mono text-zinc-300 uppercase mb-2">{post.date}</div>
                     <div className="text-xs font-bold leading-tight line-clamp-2 group-hover:text-emerald-400 transition-colors">
                       {post.title}
                     </div>
@@ -146,21 +146,21 @@ export default function BlogPage() {
                   className="bg-zinc-900/20 border border-zinc-900 p-8 lg:p-10 rounded-[40px] flex flex-col justify-between group hover:border-emerald-500/20 hover:bg-zinc-900/40 transition-all shadow-xl w-full"
                 >
                   <div>
-                    <div className="flex items-center gap-4 text-[9px] font-mono font-bold uppercase tracking-widest text-zinc-600 mb-6 group-hover:text-emerald-500 transition-colors">
+                    <div className="flex items-center gap-4 text-[9px] font-mono font-bold uppercase tracking-widest text-zinc-300 mb-6 group-hover:text-emerald-500 transition-colors">
                       <span className="bg-zinc-900 px-2 py-0.5 rounded border border-zinc-800">{post.category}</span>
                       <span>{post.readTime}</span>
                     </div>
                     <h2 className="text-2xl font-bold tracking-tight mb-4 leading-tight">
                       {post.title}
                     </h2>
-                    <p className="text-zinc-500 text-sm leading-relaxed mb-8 line-clamp-3">
+                    <p className="text-zinc-300 text-sm leading-relaxed mb-8 line-clamp-3">
                       {post.excerpt}
                     </p>
                   </div>
                   
                   <div className="pt-8 border-t border-zinc-900/50 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                       <div className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center font-bold text-[10px] text-zinc-500">
+                       <div className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center font-bold text-[10px] text-zinc-300">
                           {post.author[0]}
                        </div>
                        <div className="flex flex-col">
@@ -201,7 +201,7 @@ export default function BlogPage() {
             </div>
             <div className="relative z-10">
               <h3 className="text-3xl font-black italic tracking-tighter mb-4">Stay Ahead of the Pulse.</h3>
-              <p className="text-zinc-500 text-sm max-w-xl mb-8 leading-relaxed">
+              <p className="text-zinc-300 text-sm max-w-xl mb-8 leading-relaxed">
                 Our automated intelligence relay extracts market signals every minute. 
                 Subscribe to get the executive summary delivered directly to your tactical interface.
               </p>
