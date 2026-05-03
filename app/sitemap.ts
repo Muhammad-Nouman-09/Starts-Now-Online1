@@ -1,26 +1,53 @@
-// app/sitemap.ts
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://startsnow.site";
 
-  const staticRoutes = [
-    "",
-    "/about",
-    "/blog",
-    "/coin",
-    "/contact",
-    "/privacy",
-    "/terms",
-    "/crypto-profit-calculator-with-fees",
-    "/crypto-to-usd-converter-instant",
-    "/live-crypto-market-prices-tracker",
-  ];
+  return [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
 
-  return staticRoutes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: route === "" ? 1 : 0.7,
-  }));
+    // CORE PAGES
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: new Date(),
+    },
+
+    // 🔥 IMPORTANT SEO TOOL PAGES
+    {
+      url: `${baseUrl}/crypto-profit-calculator-with-fees`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/live-crypto-market-prices-tracker`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/cryptocurrency-converter-live-rates`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+  ];
 }
