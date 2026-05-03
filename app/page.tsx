@@ -26,7 +26,9 @@ export default function HomePage() {
             <span className="text-emerald-400">for Everyday Work</span>
           </h1>
           <p className="text-base md:text-lg text-zinc-400 max-w-2xl mx-auto mb-6 leading-relaxed">
-            Free Online Tools for Crypto, Freelancers, Business & Office Work. Calculate, convert, and solve real problems with fast, simple tools, all in one place.
+            Use our free calculators and converters to solve real problems in crypto,
+freelancing, business, and office work. Each tool is designed for speed,
+accuracy, and simplicity.
           </p>
         </div>
         <div className="mt-2">

@@ -19,8 +19,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Free Tools for Students, Freelancers & Businesses | Starts Now",
-  description: "Discover free tools for students, freelancers, and businesses. Boost productivity with AI-powered writing, coding, and financial tools. No signup required, start instantly.",
+  title: "Free Calculators & Converters for Crypto, Freelancers & Business| Starts Now",
+  description: "Discover a comprehensive suite of free financial tools. Includes crypto profit calculators, currency converters, freelance hourly rate tools, and business expense trackers. Start managing your numbers now.",
   keywords: [
     "free crypto calculator",
     "crypto converter",

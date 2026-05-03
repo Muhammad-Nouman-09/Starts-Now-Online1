@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MessageSquare, Send, Globe, Phone, MapPin } from "lucide-react";
+import { Mail, MessageSquare, Send, Globe, Phone, MapPin, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { motion } from "motion/react";
 import MetaLayout from "@/components/MetaLayout";
 
@@ -171,6 +172,45 @@ export default function ContactPage() {
               </form>
             )}
           </div>
+        </div>
+      </div>
+
+      {/* Internal Linking Section */}
+      <div className="mt-16 pt-12 border-t border-zinc-800">
+        <h3 className="text-2xl font-bold mb-8 italic">Explore Our Tools</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Link 
+            href="/crypto-profit-calculator-with-fees"
+            className="bg-zinc-900/20 border border-zinc-800 hover:border-emerald-500/30 rounded-[30px] p-8 transition-all group"
+          >
+            <h4 className="font-bold text-zinc-200 mb-3 group-hover:text-emerald-400 transition-colors">Crypto Profit Calculator</h4>
+            <p className="text-zinc-400 text-sm mb-4">Calculate exact ROI with fee adjustments for your cryptocurrency trades.</p>
+            <div className="text-emerald-400 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+              Try Now <ArrowRight className="w-3 h-3" />
+            </div>
+          </Link>
+
+          <Link 
+            href="/live-crypto-market-prices-tracker"
+            className="bg-zinc-900/20 border border-zinc-800 hover:border-emerald-500/30 rounded-[30px] p-8 transition-all group"
+          >
+            <h4 className="font-bold text-zinc-200 mb-3 group-hover:text-emerald-400 transition-colors">Market Price Tracker</h4>
+            <p className="text-zinc-400 text-sm mb-4">Monitor live prices for 50+ cryptocurrencies with real-time market data.</p>
+            <div className="text-emerald-400 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+              View Markets <ArrowRight className="w-3 h-3" />
+            </div>
+          </Link>
+
+          <Link 
+            href="/blog"
+            className="bg-zinc-900/20 border border-zinc-800 hover:border-emerald-500/30 rounded-[30px] p-8 transition-all group"
+          >
+            <h4 className="font-bold text-zinc-200 mb-3 group-hover:text-emerald-400 transition-colors">Intelligence Terminal</h4>
+            <p className="text-zinc-400 text-sm mb-4">Read expert analysis and blockchain insights to guide your strategies.</p>
+            <div className="text-emerald-400 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+              Read Blog <ArrowRight className="w-3 h-3" />
+            </div>
+          </Link>
         </div>
       </div>
     </MetaLayout>

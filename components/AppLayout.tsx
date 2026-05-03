@@ -22,9 +22,9 @@ import { isSupabaseConfigured, supabase } from "@/lib/supabase";
 import { getProfileInitials, getUserProfile, type UserProfile } from "@/lib/profiles";
 
 const cryptoTools = [
-  { name: "Profit Calculator", path: "/calculator", icon: Calculator },
-  { name: "Market", path: "/market", icon: Coins },
-  { name: "Converter", path: "/converter", icon: ArrowLeftRight },
+  { name: "Profit Calculator", path: "/crypto-profit-calculator-with-fees", icon: Calculator },
+  { name: "Market", path: "/live-crypto-market-prices-tracker", icon: Coins },
+  { name: "Converter", path: "/crypto-to-usd-converter-instant", icon: ArrowLeftRight },
 ];
 
 const officeTools: { name: string; path: string; icon: React.ElementType }[] = [];

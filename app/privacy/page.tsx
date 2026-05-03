@@ -1,4 +1,6 @@
 import MetaLayout from "@/components/MetaLayout";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function PrivacyPage() {
   return (
@@ -41,6 +43,28 @@ export default function PrivacyPage() {
           If you have questions regarding this Privacy Protocol or the security of your data within our terminal, please contact us through our official social relays or support channels.
         </p>
 
+        {/* Internal Linking Section */}
+        <div className="mt-16 pt-8 border-t border-zinc-900">
+          <h3 className="text-lg font-bold mb-6 italic">Explore Our Tools & Resources</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Link 
+              href="/crypto-profit-calculator-with-fees"
+              className="bg-zinc-900/50 border border-zinc-800 hover:border-emerald-500/30 rounded-xl p-4 transition-all"
+            >
+              <div className="font-bold text-zinc-200 mb-1">Profit Calculator</div>
+              <div className="text-xs text-zinc-400 mb-2">Calculate ROI with precise fee adjustments</div>
+              <div className="text-emerald-400 text-xs font-bold flex items-center gap-1">Try Now <ArrowRight className="w-3 h-3" /></div>
+            </Link>
+            <Link 
+              href="/about"
+              className="bg-zinc-900/50 border border-zinc-800 hover:border-emerald-500/30 rounded-xl p-4 transition-all"
+            >
+              <div className="font-bold text-zinc-200 mb-1">About Starts Now</div>
+              <div className="text-xs text-zinc-400 mb-2">Learn about our mission and infrastructure</div>
+              <div className="text-emerald-400 text-xs font-bold flex items-center gap-1">Learn More <ArrowRight className="w-3 h-3" /></div>
+            </Link>
+          </div>
+        </div>
       </div>
     </MetaLayout>
   );

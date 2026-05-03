@@ -23,14 +23,14 @@ export default function Footer() {
 
         <div className="flex flex-col gap-4">
           <span className="text-xs font-medium uppercase tracking-widest text-emerald-400">Products</span>
-          <Link href="/market" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Crypto Tools</Link>
-          <Link href="#" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Office Tools</Link>
-          <Link href="#" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Freelancer Tools</Link>
+          <Link href="/live-crypto-market-prices-tracker" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Market Explorer</Link>
+          <Link href="/crypto-profit-calculator-with-fees" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Profit Calculator</Link>
+          <Link href="/crypto-to-usd-converter-instant" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Crypto Converter</Link>
         </div>
 
         <div className="flex flex-col gap-4">
           <span className="text-xs font-medium uppercase tracking-widest text-emerald-400">Company</span>
-          <Link href="#" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Business Tools</Link>
+          <Link href="/about" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">About Us</Link>
           <Link href="/blog" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Intelligence</Link>
           <Link href="/blog" className="text-zinc-300 text-xs font-medium uppercase tracking-widest hover:text-emerald-400 transition-colors">Latest Blogs</Link>
         </div>

@@ -185,6 +185,51 @@ export default function MarketRegistry() {
         </article>
       </div>
 
+      {/* Internal Linking Section */}
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 hover:border-emerald-500/30 transition-all">
+          <h3 className="font-bold text-zinc-200 mb-3">Calculate Investment Returns</h3>
+          <p className="text-zinc-400 text-sm mb-4">
+            Use our profit calculator to determine your exact ROI for any cryptocurrency position.
+          </p>
+          <Link
+            href="/crypto-profit-calculator-with-fees"
+            className="text-emerald-400 text-sm font-bold uppercase tracking-widest flex items-center gap-2 hover:text-emerald-300 transition-colors"
+          >
+            Use Calculator
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 hover:border-emerald-500/30 transition-all">
+          <h3 className="font-bold text-zinc-200 mb-3">Convert to Fiat Currency</h3>
+          <p className="text-zinc-400 text-sm mb-4">
+            Instantly convert cryptocurrency holdings to USD, PKR, INR, or other currencies.
+          </p>
+          <Link
+            href="/crypto-to-usd-converter-instant"
+            className="text-emerald-400 text-sm font-bold uppercase tracking-widest flex items-center gap-2 hover:text-emerald-300 transition-colors"
+          >
+            Try Converter
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 hover:border-emerald-500/30 transition-all">
+          <h3 className="font-bold text-zinc-200 mb-3">Deep Market Analysis</h3>
+          <p className="text-zinc-400 text-sm mb-4">
+            Read expert analysis and blockchain insights to make better investment decisions.
+          </p>
+          <Link
+            href="/blog"
+            className="text-emerald-400 text-sm font-bold uppercase tracking-widest flex items-center gap-2 hover:text-emerald-300 transition-colors"
+          >
+            Read Blog
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

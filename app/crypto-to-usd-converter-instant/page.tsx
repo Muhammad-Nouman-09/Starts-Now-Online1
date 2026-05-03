@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowLeftRight, RefreshCw } from "lucide-react";
+import { ArrowLeftRight, RefreshCw, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { CryptoRate } from "@/types";
 import { FIXED_EXCHANGE_RATES } from "@/constants";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
@@ -172,6 +173,51 @@ export default function ConverterPage() {
             </div>
           </div>
         </article>
+      </div>
+
+      {/* Internal Linking Section */}
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 hover:border-emerald-500/30 transition-all">
+          <h3 className="font-bold text-zinc-200 mb-3">Calculate Your Profits</h3>
+          <p className="text-zinc-400 text-sm mb-4">
+            Know your exact ROI with our advanced crypto profit calculator that factors in fees.
+          </p>
+          <Link
+            href="/crypto-profit-calculator-with-fees"
+            className="text-emerald-400 text-sm font-bold uppercase tracking-widest flex items-center gap-2 hover:text-emerald-300 transition-colors"
+          >
+            Use Calculator
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 hover:border-emerald-500/30 transition-all">
+          <h3 className="font-bold text-zinc-200 mb-3">Track Live Market Prices</h3>
+          <p className="text-zinc-400 text-sm mb-4">
+            Monitor 50+ cryptocurrencies with real-time price updates and market analytics.
+          </p>
+          <Link
+            href="/live-crypto-market-prices-tracker"
+            className="text-emerald-400 text-sm font-bold uppercase tracking-widest flex items-center gap-2 hover:text-emerald-300 transition-colors"
+          >
+            View Markets
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 hover:border-emerald-500/30 transition-all">
+          <h3 className="font-bold text-zinc-200 mb-3">Learn Market Strategies</h3>
+          <p className="text-zinc-400 text-sm mb-4">
+            Read expert insights and analysis on cryptocurrency markets and investment strategies.
+          </p>
+          <Link
+            href="/blog"
+            className="text-emerald-400 text-sm font-bold uppercase tracking-widest flex items-center gap-2 hover:text-emerald-300 transition-colors"
+          >
+            Read Blog
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
 
       <script

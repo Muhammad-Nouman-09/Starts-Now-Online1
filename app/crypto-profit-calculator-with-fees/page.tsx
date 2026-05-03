@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Calculator, TrendingUp, TrendingDown, RefreshCw, Info, DollarSign, Percent } from "lucide-react";
+import { Calculator, TrendingUp, TrendingDown, RefreshCw, Info, DollarSign, Percent, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { CryptoRate } from "@/types";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 
@@ -300,6 +301,51 @@ export default function ProfitCalculatorPage() {
             </div>
           </div>
         </article>
+      </div>
+
+      {/* Internal Linking Section */}
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 hover:border-emerald-500/30 transition-all">
+          <h3 className="font-bold text-zinc-200 mb-3">Next Step: Convert Your Holdings</h3>
+          <p className="text-zinc-400 text-sm mb-4">
+            Once you've calculated your profits, use our converter to check your crypto values in USD, PKR, or INR.
+          </p>
+          <Link
+            href="/crypto-to-usd-converter-instant"
+            className="text-emerald-400 text-sm font-bold uppercase tracking-widest flex items-center gap-2 hover:text-emerald-300 transition-colors"
+          >
+            Try Converter
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 hover:border-emerald-500/30 transition-all">
+          <h3 className="font-bold text-zinc-200 mb-3">Explore Market Prices</h3>
+          <p className="text-zinc-400 text-sm mb-4">
+            Check current prices for 50+ cryptocurrencies and track market movements in real-time.
+          </p>
+          <Link
+            href="/live-crypto-market-prices-tracker"
+            className="text-emerald-400 text-sm font-bold uppercase tracking-widest flex items-center gap-2 hover:text-emerald-300 transition-colors"
+          >
+            View Markets
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 hover:border-emerald-500/30 transition-all">
+          <h3 className="font-bold text-zinc-200 mb-3">Read Trading Strategies</h3>
+          <p className="text-zinc-400 text-sm mb-4">
+            Learn how to maximize crypto profits with expert analysis and trading insights from our blog.
+          </p>
+          <Link
+            href="/blog"
+            className="text-emerald-400 text-sm font-bold uppercase tracking-widest flex items-center gap-2 hover:text-emerald-300 transition-colors"
+          >
+            Read Blog
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
 
       <script
