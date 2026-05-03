@@ -58,10 +58,10 @@ export default function BlogPage() {
                    Intelligence Sectors
                 </h3>
                 <div className="flex gap-1 lg:hidden">
-                  <button onClick={() => scrollSectors('left')} className="w-6 h-6 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-500 transition-colors bg-zinc-950">
+                  <button onClick={() => scrollSectors('left')} className="w-6 h-6 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-500 transition-colors bg-zinc-950" aria-label="Scroll left">
                     <ChevronLeft className="w-3 h-3" />
                   </button>
-                  <button onClick={() => scrollSectors('right')} className="w-6 h-6 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-500 transition-colors bg-zinc-950">
+                  <button onClick={() => scrollSectors('right')} className="w-6 h-6 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-500 transition-colors bg-zinc-950" aria-label="Scroll right">
                     <ChevronRight className="w-3 h-3" />
                   </button>
                 </div>

@@ -42,7 +42,8 @@ export default function HeroSearch() {
         </div>
         <button
           type="submit"
-          className="bg-emerald-400 hover:bg-emerald-300 text-zinc-950 px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors shrink-0"
+          aria-label="Find tool"
+          className="bg-emerald-400 hover:bg-emerald-300 text-zinc-950 px-8 py-3 min-h-[48px] rounded-lg text-sm font-bold uppercase tracking-wider transition-colors shrink-0"
         >
           Find Tool
         </button>

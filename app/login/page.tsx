@@ -173,7 +173,8 @@ export default function LoginPage() {
 
             <button
               disabled={isLoading}
-              className="w-full bg-emerald-400 hover:bg-emerald-300 text-zinc-950 font-bold py-3 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:active:scale-100"
+              aria-label="Submit login form"
+              className="w-full bg-emerald-400 hover:bg-emerald-300 text-zinc-950 font-bold py-3 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:active:scale-100 "
             >
               {isLoading ? (
                 <div className="w-5 h-5 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin" />
@@ -200,7 +201,8 @@ export default function LoginPage() {
               type="button"
               onClick={handleGoogleSignIn}
               disabled={providerLoading !== null}
-              className="flex w-full items-center justify-center gap-3 bg-zinc-950 border border-zinc-800 hover:border-zinc-700 py-2.5 rounded-xl transition-all group disabled:opacity-50"
+              aria-label="Sign in with Google"
+              className="flex w-full items-center justify-center gap-3 bg-zinc-950 border border-zinc-800 hover:border-zinc-700 py-2.5 rounded-xl transition-all group disabled:opacity-50 "
             >
               {providerLoading === "google" ? (
                 <div className="w-4 h-4 border-2 border-zinc-500 border-t-transparent rounded-full animate-spin" />

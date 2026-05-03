@@ -61,6 +61,7 @@ function NavDropdown({
           "flex items-center gap-1 text-sm font-semibold tracking-tight transition-colors duration-200",
           isActive ? "text-emerald-400" : "text-zinc-400 hover:text-emerald-300"
         )}
+        aria-label={`Open ${label} menu`}
       >
         {label}
         <ChevronDown className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" />
@@ -130,7 +131,8 @@ function DesktopProfileMenu({
 }) {
   return (
     <div className="relative group">
-      <button className="flex h-10 w-[220px] items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-1.5 text-left transition-colors hover:border-emerald-400/40">
+      
+      <button className="flex h-10 w-[220px] items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-1.5 text-left transition-colors hover:border-emerald-400/40 " aria-label="Open profile menu">
         <ProfileAvatar profile={profile} />
         <span className="min-w-0 flex-1">
           <span className="block truncate text-sm font-bold text-white">{profile.full_name}</span>
@@ -154,6 +156,7 @@ function DesktopProfileMenu({
             type="button"
             onClick={onSignOut}
             className="flex w-full items-center gap-3 px-4 py-3 text-left text-xs font-bold uppercase tracking-widest text-zinc-400 transition-colors hover:bg-zinc-800/70 hover:text-white"
+            aria-label="Sign out"
           >
             <LogOut className="h-4 w-4" />
             Sign Out
@@ -183,6 +186,7 @@ function MobileProfilePanel({
       <button
         type="button"
         onClick={onSignOut}
+        aria-label="Sign out"
         className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-zinc-800 px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-zinc-400 transition-colors hover:border-zinc-700 hover:text-white"
       >
         <LogOut className="h-4 w-4" />
@@ -310,6 +314,7 @@ export default function AppLayout() {
           <button
             className="md:hidden p-2 text-zinc-400"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Open mobile menu"
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
           </button>

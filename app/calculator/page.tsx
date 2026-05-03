@@ -134,6 +134,7 @@ export default function ProfitCalculatorPage() {
                 <button 
                   onClick={() => setBuyPrice(selectedCoin.usdPrice)}
                   className="text-[9px] uppercase tracking-tighter text-zinc-700 hover:text-emerald-500 transition-colors font-bold ml-2"
+                  aria-label="Set to Current Market Price"
                 >
                   Set to Current Market Price
                 </button>
@@ -157,6 +158,7 @@ export default function ProfitCalculatorPage() {
                        key={p}
                        onClick={() => setSellPrice(buyPrice * (1 + p/100))}
                        className="text-[9px] uppercase tracking-tighter text-zinc-700 hover:text-white transition-colors font-bold"
+                       aria-label={`Set exit price to ${p}% above entry price`}
                      >
                        +{p}%
                      </button>

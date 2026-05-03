@@ -43,8 +43,12 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
                   </div>
                </div>
                <div className="flex gap-4">
-                  <button className="flex-1 md:flex-none p-3 bg-zinc-900 rounded-xl border border-zinc-800 hover:text-emerald-500 transition-all flex items-center justify-center"><Share2 className="w-4 h-4" /></button>
-                  <button className="flex-1 md:flex-none p-3 bg-zinc-900 rounded-xl border border-zinc-800 hover:text-indigo-500 transition-all flex items-center justify-center"><MessageSquare className="w-4 h-4" /></button>
+                  <button className="flex-1 md:flex-none p-3 bg-zinc-900 rounded-xl border border-zinc-800 hover:text-emerald-500 transition-all flex items-center justify-center" aria-label="Open menu">
+                    <Share2 className="w-4 h-4" />
+                  </button>
+                  <button className="flex-1 md:flex-none p-3 bg-zinc-900 rounded-xl border border-zinc-800 hover:text-indigo-500 transition-all flex items-center justify-center" aria-label="Comment">
+                    <MessageSquare className="w-4 h-4" />
+                  </button>
                </div>
             </div>
           </header>
