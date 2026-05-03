@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import HeroSearch from "@/components/HeroSearch";
-import FeaturedToolsCarousel from "@/components/FeaturedToolsCarousel";
+import dynamic from "next/dynamic";
+import { HeroSearch, FeaturedToolsCarousel } from "@/components/LazyComponents";
 import { categories, blogHighlights } from "@/components/HomeData";
 
 /* ─── Page Component ─────────────────────────────────────────── */
@@ -20,17 +20,18 @@ export default function HomePage() {
           }}
         />
 
-        <div className="max-w-7xl mx-auto relative z-10 text-center min-h-[360px] md:min-h-[336px] flex flex-col justify-start">
-          <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 max-w-8xl mx-auto">
+        <div className="max-w-7xl mx-auto relative z-10 text-center min-h-[320px] flex flex-col justify-start">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-4 max-w-7xl mx-auto">
             Free Calculators, Converters & Smart Tools{" "}
             <span className="text-emerald-400">for Everyday Work</span>
           </h1>
-          <p className="text-base md:text-lg text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-base md:text-lg text-zinc-400 max-w-2xl mx-auto mb-6 leading-relaxed">
             Free Online Tools for Crypto, Freelancers, Business & Office Work. Calculate, convert, and solve real problems with fast, simple tools, all in one place.
           </p>
-
-          <HeroSearch />
         </div>
+        <div className="mt-2">
+  <HeroSearch />
+</div>
       </section>
 
       {/* ── Category Showcase Grid ───────────────────────────── */}
