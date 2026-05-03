@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { LayoutDashboard, Search, RefreshCw, ArrowRight } from "lucide-react";
+import { LayoutDashboard, Search, RefreshCw, ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
 import { CryptoRate } from "@/types";
 import { motion } from "motion/react";
+import { allTools } from "@/components/HomeData";
 import AdPlacement from "@/components/AdPlacement";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 
@@ -185,8 +186,56 @@ export default function MarketRegistry() {
         </article>
       </div>
 
-      {/* Internal Linking Section */}
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Related Tools Section */}
+      <div className="mt-16">
+        <div className="mb-12">
+          <h2 className="text-xl md:text-2xl font-bold tracking-tight mb-2 flex items-center gap-2">
+            <Zap className="w-5 h-5 text-emerald-500" />
+            Related Crypto Tools
+          </h2>
+          <p className="text-zinc-400 text-sm">Explore other tools to maximize your crypto strategy</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {allTools
+            .filter((tool) => tool.category === "CRYPTO" && tool.id !== "market-tracker")
+            .map((tool) => {
+              const IconComponent = tool.icon;
+              return (
+                <Link
+                  key={tool.id}
+                  href={tool.href}
+                  className="group bg-zinc-900/10 border border-zinc-900 rounded-[20px] p-6 hover:border-emerald-500/30 hover:bg-zinc-900/20 transition-all"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <span className="text-[8px] font-bold uppercase tracking-widest text-emerald-400 px-2 py-1 bg-emerald-500/10 rounded">
+                      {tool.category}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-lg mb-2 group-hover:text-emerald-400 transition-colors">
+                    {tool.title}
+                  </h3>
+                  <p className="text-zinc-400 text-sm mb-4 line-clamp-2">
+                    {tool.description}
+                  </p>
+                  <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-3">
+                      <span className="text-zinc-500">⭐ {tool.rating}</span>
+                      <span className="text-zinc-500">{tool.users}</span>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              );
+            })}
+        </div>
+      </div>
+
+      {/* Quick Links Section */}
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="bg-zinc-900/10 border border-zinc-900 rounded-[30px] p-8 hover:border-emerald-500/30 transition-all">
           <h3 className="font-bold text-zinc-200 mb-3">Calculate Investment Returns</h3>
           <p className="text-zinc-400 text-sm mb-4">

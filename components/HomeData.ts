@@ -1,6 +1,6 @@
 import {
   Wallet, Receipt, BarChart3, Brain,
-  Bitcoin, Building2, Briefcase, Users,
+  Bitcoin, Building2, Briefcase, Users, LayoutDashboard,
 } from "lucide-react";
 import { mockBlogPosts } from "@/constants";
 
@@ -29,6 +29,39 @@ export const categories = [
   //   icon: Users,
   //   href: "#",
   // },
+];
+
+export const allTools = [
+  {
+    id: "profit-calculator",
+    title: "Profit Calculator",
+    description: "Real-time multi-asset profit and loss simulator with tax implications.",
+    icon: Wallet,
+    rating: 4.9,
+    users: "12.5k",
+    category: "CRYPTO",
+    href: "/crypto-profit-calculator-with-fees",
+  },
+  {
+    id: "currency-converter",
+    title: "Currency Converter",
+    description: "Convert crypto to USD, PKR, INR and track real-time exchange rates.",
+    icon: Wallet,
+    rating: 4.8,
+    users: "9.3k",
+    category: "CRYPTO",
+    href: "/crypto-to-usd-converter-instant",
+  },
+  {
+    id: "market-tracker",
+    title: "Market Explorer",
+    description: "Global asset registry with real-time price tracking and market analysis.",
+    icon: LayoutDashboard,
+    rating: 4.9,
+    users: "15.2k",
+    category: "CRYPTO",
+    href: "/live-crypto-market-prices-tracker",
+  },
 ];
 
 export const featuredTools = [

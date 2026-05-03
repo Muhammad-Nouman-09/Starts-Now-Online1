@@ -75,6 +75,37 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
                 </div>
              </div>
           </section>
+
+          <section className="mt-16 md:mt-20 pt-12 border-t border-zinc-900">
+             <div className="mb-10">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-300 mb-6 flex items-center gap-2">
+                   <BookOpen className="w-3 h-3 text-emerald-500" />
+                   Related Reading
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {mockBlogPosts
+                    .filter((p) => p.category === post.category && p.id !== id)
+                    .slice(0, 4)
+                    .map((relatedPost) => (
+                      <Link
+                        key={relatedPost.id}
+                        href={`/blog/${relatedPost.id}`}
+                        className="group p-6 rounded-2xl bg-zinc-900/20 border border-zinc-900 hover:border-emerald-500/30 transition-all hover:bg-zinc-900/40"
+                      >
+                        <span className="text-[8px] font-bold uppercase tracking-widest text-emerald-400 mb-3 block">{relatedPost.category}</span>
+                        <h4 className="text-sm md:text-base font-bold leading-tight group-hover:text-emerald-400 transition-colors mb-3 line-clamp-2">
+                          {relatedPost.title}
+                        </h4>
+                        <p className="text-[12px] text-zinc-400 line-clamp-2 mb-4">{relatedPost.excerpt}</p>
+                        <div className="flex items-center justify-between text-[10px]">
+                          <span className="text-zinc-500">{relatedPost.date}</span>
+                          <span className="text-zinc-500">{relatedPost.readTime}</span>
+                        </div>
+                      </Link>
+                    ))}
+                </div>
+             </div>
+          </section>
         </article>
 
         {/* Article Sidebar */}
